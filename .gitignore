@@ -183,6 +183,7 @@ ClientBin/
 *.dbproj.schemaview
 *.pfx
 *.publishsettings
+[Aa]pplication[Hh]ost.config
 node_modules/
 orleans.codegen.cs
 
