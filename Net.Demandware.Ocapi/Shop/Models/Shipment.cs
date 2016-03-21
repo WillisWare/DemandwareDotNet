@@ -7,7 +7,7 @@ namespace Net.Demandware.Ocapi.Shop.Models
     /// <summary>
     /// Enumerates the shipping status of a shipment.
     /// </summary>
-    public enum ShippingStatus
+    public enum ShipmentShippingStatus
     {
         [EnumMember(Value = "not_shipped")]
         NotShipped,
@@ -106,7 +106,7 @@ namespace Net.Demandware.Ocapi.Shop.Models
         /// The shipping status of the shipment.
         /// </summary>
         [JsonProperty(PropertyName = "shipping_status")]
-        public ShippingStatus Status { get; set; }
+        public ShipmentShippingStatus ShippingStatus { get; set; }
 
         /// <summary>
         /// The total tax amount of the shipment.

@@ -70,9 +70,15 @@
     <Compile Include="BaseModels\BaseAddress.cs" />
     <Compile Include="BaseModels\BaseClass.cs" />
     <Compile Include="BaseModels\BaseItem.cs" />
+    <Compile Include="BaseModels\BaseOrder.cs" />
+    <Compile Include="BaseModels\BasePagedResult.cs" />
     <Compile Include="BaseModels\BasePageItem.cs" />
+    <Compile Include="BaseRequests\BasePaymentCardRequest.cs" />
+    <Compile Include="BaseModels\BasePaymentInstrument.cs" />
+    <Compile Include="BaseRequests\BasePaymentInstrumentRequest.cs" />
     <Compile Include="BaseModels\BasePromotion.cs" />
     <Compile Include="BaseModels\BaseResult.cs" />
+    <Compile Include="Flash.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -85,6 +91,15 @@
     <Compile Include="Shop\CategoryResult.cs" />
     <Compile Include="Shop\ContentFolderResult.cs" />
     <Compile Include="Shop\ContentResult.cs" />
+    <Compile Include="Shop\ContentSearchResult.cs" />
+    <Compile Include="Shop\CustomerAddressResult.cs" />
+    <Compile Include="Shop\CustomerOrderResult.cs" />
+    <Compile Include="Shop\CustomerPaymentCardRequest.cs" />
+    <Compile Include="Shop\CustomerPaymentInstrumentRequest.cs" />
+    <Compile Include="Shop\CustomerPaymentInstrumentResult.cs" />
+    <Compile Include="Shop\DiscountRequest.cs" />
+    <Compile Include="Fault.cs" />
+    <Compile Include="Shop\GiftCertificateRequest.cs" />
     <Compile Include="Shop\Models\AddressLink.cs" />
     <Compile Include="Shop\Models\AuthRequest.cs" />
     <Compile Include="Shop\Models\Basket.cs" />
@@ -96,9 +111,14 @@
     <Compile Include="Shop\Models\ContentSearchRefinement.cs" />
     <Compile Include="Shop\Models\ContentSearchRefinementValue.cs" />
     <Compile Include="Shop\Models\CouponItem.cs" />
+    <Compile Include="Shop\Models\Customer.cs" />
     <Compile Include="Shop\Models\CustomerAddress.cs" />
     <Compile Include="Shop\Models\CustomerInfo.cs" />
+    <Compile Include="Shop\Models\CustomerPaymentInstrument.cs" />
+    <Compile Include="Shop\Models\CustomerRegistration.cs" />
+    <Compile Include="Shop\Models\CustomObject.cs" />
     <Compile Include="Shop\Models\Discount.cs" />
+    <Compile Include="Shop\Models\GiftCertificate.cs" />
     <Compile Include="Shop\Models\GiftCertificateItem.cs" />
     <Compile Include="Shop\Models\Image.cs" />
     <Compile Include="Shop\Models\ImageGroup.cs" />
@@ -107,6 +127,7 @@
     <Compile Include="Shop\Models\Option.cs" />
     <Compile Include="Shop\Models\OptionItem.cs" />
     <Compile Include="Shop\Models\OptionValue.cs" />
+    <Compile Include="Shop\Models\Order.cs" />
     <Compile Include="Shop\Models\OrderAddress.cs" />
     <Compile Include="Shop\Models\OrderPaymentInstrument.cs" />
     <Compile Include="Shop\Models\PaymentBankAccount.cs" />

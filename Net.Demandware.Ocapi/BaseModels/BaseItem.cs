@@ -4,6 +4,9 @@ using Newtonsoft.Json;
 
 namespace Net.Demandware.Ocapi.BaseModels
 {
+    /// <summary>
+    /// Represents the basic structure of a sub-item.
+    /// </summary>
     public abstract class BaseItem
     {
         #region Properties
