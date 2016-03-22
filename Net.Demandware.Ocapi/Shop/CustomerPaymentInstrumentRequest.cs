@@ -6,7 +6,7 @@ namespace Net.Demandware.Ocapi.Shop
     /// <summary>
     /// Represents a customer payment instrument request.
     /// </summary>
-    public sealed class CustomerPaymentInstrumentRequest : BasePaymentInstrumentRequest
+    public class CustomerPaymentInstrumentRequest : BasePaymentInstrumentRequest
     {
         #region Properties
 

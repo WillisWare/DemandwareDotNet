@@ -7,7 +7,7 @@ namespace Net.Demandware.Ocapi.Shop
     /// <summary>
     /// Represents a customer payment card request.
     /// </summary>
-    public sealed class CustomerPaymentCardRequest : BasePaymentCardRequest
+    public class CustomerPaymentCardRequest : BasePaymentCardRequest
     {
         #region Properties
 
