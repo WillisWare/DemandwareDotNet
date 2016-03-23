@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 
-namespace Net.Demandware.Ocapi.Shop.Models
+namespace Net.Demandware.Ocapi
 {
     /// <summary>
     /// Represents a link to another resource.

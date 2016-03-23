@@ -1,4 +1,5 @@
 ﻿using Net.Demandware.Ocapi.BaseModels;
+using Net.Demandware.Ocapi.BaseResults;
 using Net.Demandware.Ocapi.Shop.Models;
 using Newtonsoft.Json;
 
