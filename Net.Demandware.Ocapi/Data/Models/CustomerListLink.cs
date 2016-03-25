@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Net.Demandware.Ocapi.Common;
+using Newtonsoft.Json;
 
 namespace Net.Demandware.Ocapi.Data.Models
 {

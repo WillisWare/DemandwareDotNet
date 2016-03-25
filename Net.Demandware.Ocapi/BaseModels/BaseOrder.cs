@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
+using Net.Demandware.Ocapi.Common;
 using Net.Demandware.Ocapi.Shop.Models;
 using Newtonsoft.Json;
 

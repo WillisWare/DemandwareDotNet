@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Net.Demandware.Ocapi.Common;
 using Newtonsoft.Json;
 
 namespace Net.Demandware.Ocapi.Shop.Models

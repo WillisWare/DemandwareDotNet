@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Net.Demandware.Ocapi.Shop;
+using Net.Demandware.Ocapi.Shop.Requests;
 using Newtonsoft.Json;
 
 namespace Net.Demandware.Ocapi.BaseRequests

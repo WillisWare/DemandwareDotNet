@@ -2,6 +2,9 @@
 
 namespace Net.Demandware.Ocapi.BaseModels
 {
+    /// <summary>
+    /// Represents the basic structure of a promotion.
+    /// </summary>
     public class BasePromotion : BaseClass
     {
         #region Properties

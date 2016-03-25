@@ -4,6 +4,9 @@ using Newtonsoft.Json;
 
 namespace Net.Demandware.Ocapi.BaseModels
 {
+    /// <summary>
+    /// Represents the basic structure of a payment instrument.
+    /// </summary>
     public abstract class BasePaymentInstrument : BaseClass
     {
         #region Properties

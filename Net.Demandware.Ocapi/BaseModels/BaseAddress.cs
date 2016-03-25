@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace Net.Demandware.Ocapi.BaseModels
 {
+    /// <summary>
+    /// Represents the basic structure of an address.
+    /// </summary>
     public abstract class BaseAddress
     {
         #region Properties

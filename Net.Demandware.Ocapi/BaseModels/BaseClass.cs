@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace Net.Demandware.Ocapi.BaseModels
 {
+    /// <summary>
+    /// Represents the basic, common properties of an OCAPI class.
+    /// </summary>
     public abstract class BaseClass
     {
         #region Properties

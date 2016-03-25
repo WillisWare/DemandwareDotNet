@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Net.Demandware.Ocapi.Common;
 using Newtonsoft.Json;
 
 namespace Net.Demandware.Ocapi.Shop.Models

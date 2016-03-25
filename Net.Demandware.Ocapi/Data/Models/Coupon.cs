@@ -94,7 +94,7 @@ namespace Net.Demandware.Ocapi.Data.Models
         /// The type of the coupon code.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
-        public CouponType Type { get; set; }
+        public new CouponType Type { get; set; }
 
         #endregion
     }
