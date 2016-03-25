@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Net.Demandware.Ocapi.BaseModels
+namespace Net.Demandware.Ocapi.BaseResults
 {
     /// <summary>
     /// Represents the basic structure of a paged result document.
