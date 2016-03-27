@@ -8,7 +8,7 @@ namespace Net.Demandware.Ocapi.Shop.Results
     /// <summary>
     /// Represents a result containing an array of content assets.
     /// </summary>
-    public sealed class ContentSearchResult : BasePagedResult<Content>
+    public sealed class ContentSearchResult : BasePagedResult<Models.Content>
     {
         #region Properties
 
@@ -16,7 +16,7 @@ namespace Net.Demandware.Ocapi.Shop.Results
         /// The sorted array of search hits. Can be empty.
         /// </summary>
         [JsonProperty(PropertyName = "hits")]
-        public override IEnumerable<Content> Data { get; set; }
+        public override IEnumerable<Models.Content> Data { get; set; }
 
         /// <summary>
         /// The query String that was searched for.

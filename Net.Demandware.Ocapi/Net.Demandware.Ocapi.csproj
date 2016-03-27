@@ -65,6 +65,7 @@
     <Compile Include="BaseResults\BasePagedResult.cs" />
     <Compile Include="BaseResults\BaseResult.cs" />
     <Compile Include="Common\CustomObject.cs" />
+    <Compile Include="Shop\Baskets.cs" />
     <Compile Include="Data\Results\CampaignSearchResult.cs" />
     <Compile Include="Data\Results\ContentAssetResult.cs" />
     <Compile Include="Data\Results\ContentFolderResult.cs" />
@@ -122,6 +123,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Shop\Categories.cs" />
+    <Compile Include="Shop\Content.cs" />
+    <Compile Include="Shop\ContentSearch.cs" />
+    <Compile Include="Shop\Customers.cs" />
+    <Compile Include="Shop\CustomObjects.cs" />
+    <Compile Include="Shop\Folders.cs" />
+    <Compile Include="Shop\GiftCertificate.cs" />
+    <Compile Include="Shop\OrderSearch.cs" />
+    <Compile Include="Shop\Orders.cs" />
+    <Compile Include="Shop\ProductLists.cs" />
+    <Compile Include="Shop\ProductSearch.cs" />
+    <Compile Include="Shop\Products.cs" />
+    <Compile Include="Shop\Promotions.cs" />
     <Compile Include="Shop\Requests\BasketCreateRequest.cs" />
     <Compile Include="Shop\Requests\BasketPaymentInstrumentRequest.cs" />
     <Compile Include="Shop\Results\BasketsResult.cs" />
@@ -230,6 +244,10 @@
     <Compile Include="Shop\Results\StoreResult.cs" />
     <Compile Include="Shop\Results\SuggestionResult.cs" />
     <Compile Include="Common\SimpleLink.cs" />
+    <Compile Include="Shop\SearchSuggestion.cs" />
+    <Compile Include="Shop\Sessions.cs" />
+    <Compile Include="Shop\Site.cs" />
+    <Compile Include="Shop\Stores.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\Resources\demandware.ico">
