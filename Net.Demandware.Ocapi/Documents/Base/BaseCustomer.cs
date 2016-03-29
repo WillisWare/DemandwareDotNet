@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 
@@ -37,12 +36,6 @@ namespace Net.Demandware.Ocapi.Documents.Base
         /// </summary>
         [JsonProperty(PropertyName = "creation_date", NullValueHandling = NullValueHandling.Ignore)]
         public DateTime CreationDate { get; set; }
-
-        /// <summary>
-        /// The customer's custom properties.
-        /// </summary>
-        [JsonExtensionData]
-        public IDictionary<string, object> CustomProperties { get; set; }
 
         /// <summary>
         /// The customer's email address.

@@ -1,7 +1,8 @@
 ﻿using System;
+using Net.Demandware.Ocapi.Documents.Common;
 using Net.Demandware.Ocapi.Documents.Shop;
+using Net.Demandware.Ocapi.Exceptions;
 using Net.Demandware.Ocapi.Resources.Base;
-using Newtonsoft.Json;
 
 namespace Net.Demandware.Ocapi.Resources.Shop
 {
@@ -31,6 +32,7 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <param name="couponItem">A CouponItem document instance containing the coupon.</param>
         /// <returns>A Basket document instance containing the updated basket.</returns>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="basketId"/> is null or empty.</exception>
+        /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         public Basket AddCouponItem(string basketId, CouponItem couponItem)
         {
             if (string.IsNullOrEmpty(basketId))
@@ -40,11 +42,11 @@ namespace Net.Demandware.Ocapi.Resources.Shop
 
             var couponUrl = $"{Configuration.ShopApiConfiguration.Url}{BASE_PATH}{basketId}/coupons";
 
-            var couponResponse = ServiceManager.HttpPost(couponUrl, GetWebHeaders(couponUrl, GetOcapiAuthorizationToken()), GetBytes(couponItem));
+            var headers = GetWebHeaders(couponUrl, GetOcapiJwtToken());
 
-            var returnValue = JsonConvert.DeserializeObject<Basket>(couponResponse);
+            var couponResponse = ServiceManager.HttpPost<Basket>(couponUrl, headers, GetBytes(couponItem));
 
-            return returnValue;
+            return couponResponse;
         }
 
         /// <summary>
@@ -54,6 +56,7 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <param name="giftCertificateItem">A GiftCertificateItem document instance containing the git certificate item.</param>
         /// <returns>A Basket document instance containing the updated basket.</returns>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="basketId"/> is null or empty.</exception>
+        /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         public Basket AddGiftCertificateItem(string basketId, GiftCertificateItem giftCertificateItem)
         {
             throw new NotImplementedException();
@@ -66,6 +69,7 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <param name="note">A Note document instance containing the note.</param>
         /// <returns>A Basket document instance containing the updated basket.</returns>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="basketId"/> is null or empty.</exception>
+        /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         public Basket AddNote(string basketId, Note note)
         {
             throw new NotImplementedException();
@@ -78,6 +82,7 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <param name="paymentInstrument">A BasketPaymentInstrumentRequest document instance containing the payment instrument.</param>
         /// <returns>A Basket document instance containing the updated basket.</returns>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="basketId"/> is null or empty.</exception>
+        /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         /// <remarks>Payment instruments are usually authorized after order creation, for example in a custom hook. The default payment authorization process executes an authorization when a payment instrument is added to an order or updated. See POST /orders/{order_no}/payment_instruments and PATCH /orders/{order_no}/payment_instruments/{payment_instrument_id}</remarks>
         public Basket AddPaymentInstrument(string basketId, BasketPaymentInstrumentRequest paymentInstrument)
         {
@@ -91,6 +96,7 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <param name="priceAdjustment">A PriceAdjustmentRequest document instance containing the price adjustment.</param>
         /// <returns>A Basket document instance containing the updated basket.</returns>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="basketId"/> is null or empty.</exception>
+        /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         public Basket AddPriceAdjustment(string basketId, PriceAdjustmentRequest priceAdjustment)
         {
             throw new NotImplementedException();
@@ -103,6 +109,7 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <param name="productItem">A ProductItem document instance containing the product item.</param>
         /// <returns>A Basket document instance containing the updated basket.</returns>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="basketId"/> is null or empty.</exception>
+        /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         /// <remarks>
         /// The added item is associated with the specified shipment. If no shipment id is specified, the added item is associated with the default shipment.
         /// <para>
@@ -131,6 +138,7 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// </summary>
         /// <param name="basket">A Basket document instance containing the values for the new basket.</param>
         /// <returns>A Basket document instance containing the new basket values.</returns>
+        /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         /// <remarks>
         /// The created basket is initialized with default values. Data provided in the body document will be populated into the created basket. It can be updated with further shop api calls.
         /// <para>
@@ -175,6 +183,7 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <param name="shipment">A Shipment document instance containing the shipment.</param>
         /// <returns>A Basket document instance containing the updated basket.</returns>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="basketId"/> is null or empty.</exception>
+        /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         /// <remarks>
         /// <para>
         /// The created shipment is initialized with values provided in the body document and can be updated with further data API calls. Considered from the body are the following properties if specified:
@@ -199,6 +208,7 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <param name="basketId">A String value containing the basket ID.</param>
         /// <returns>A Basket document instance containing the requested basket.</returns>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="basketId"/> is null or empty.</exception>
+        /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         public Basket GetBasket(string basketId)
         {
             throw new NotImplementedException();
@@ -210,6 +220,7 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <param name="basketId">A String value containing the basket ID.</param>
         /// <returns>A NotesResult instance containing the notes for the basket.</returns>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="basketId"/> is null or empty.</exception>
+        /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         public NotesResult GetNotes(string basketId)
         {
             throw new NotImplementedException();
@@ -221,7 +232,22 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <param name="basketId">A String value containing the basket ID.</param>
         /// <returns>A PaymentMethodResult document instance containing the payment methods.</returns>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="basketId"/> is null or empty.</exception>
+        /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         public PaymentMethodResult GetPaymentMethods(string basketId)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Gets the applicable shipping methods for a certain shipment of a basket.
+        /// </summary>
+        /// <param name="basketId">The ID of the basket.</param>
+        /// <param name="shipmentId">The ID of the shipment.</param>
+        /// <returns>A ShippingMethodResult document instance containing the shipping methods.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="basketId"/> is null or empty.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="shipmentId"/> is null or empty.</exception>
+        /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
+        public ShippingMethodResult GetShippingMethods(string basketId, string shipmentId)
         {
             throw new NotImplementedException();
         }
@@ -231,6 +257,7 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// </summary>
         /// <param name="basketId">A String value containing the basket ID.</param>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="basketId"/> is null or empty.</exception>
+        /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         public void RemoveBasket(string basketId)
         {
             throw new NotImplementedException();
@@ -244,6 +271,7 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <returns>A Basket document instance containing the updated basket.</returns>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="basketId"/> is null or empty.</exception>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="couponItemId"/> is null or empty.</exception>
+        /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         public Basket RemoveCoupon(string basketId, string couponItemId)
         {
             throw new NotImplementedException();
@@ -257,6 +285,7 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <returns>A Basket document instance containing the updated basket.</returns>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="basketId"/> is null or empty.</exception>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="noteId"/> is null or empty.</exception>
+        /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         public Basket RemoveNote(string basketId, string noteId)
         {
             throw new NotImplementedException();
@@ -270,6 +299,7 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <returns>A Basket document instance containing the updated basket.</returns>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="basketId"/> is null or empty.</exception>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="paymentInstrumentId"/> is null or empty.</exception>
+        /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         public Basket RemovePaymentInstrument(string basketId, string paymentInstrumentId)
         {
             throw new NotImplementedException();
@@ -283,6 +313,7 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <returns>A Basket document instance containing the updated basket.</returns>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="basketId"/> is null or empty.</exception>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="priceAdjustmentId"/> is null or empty.</exception>
+        /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         public Basket RemovePriceAdjustment(string basketId, string priceAdjustmentId)
         {
             throw new NotImplementedException();
@@ -296,6 +327,7 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <returns>A Basket document instance containing the updated basket.</returns>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="basketId"/> is null or empty.</exception>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="itemId"/> is null or empty.</exception>
+        /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         public Basket RemoveProductItem(string basketId, string itemId)
         {
             throw new NotImplementedException();
@@ -308,6 +340,7 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <returns>A Basket document instance containing the updated basket.</returns>
         /// <remarks>Only the currency of the basket and the custom properties of the basket and of the shipping items will be considered.</remarks>
         /// <exception cref="ArgumentException">Thrown when <paramref name="basket"/> does not contain a valid basket ID.</exception>
+        /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         public Basket UpdateBasket(Basket basket)
         {
             throw new NotImplementedException();
@@ -321,6 +354,7 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <param name="useAsDefault">A Boolean value indicating whether the given address will also be used as shipping address for the default shipment.</param>
         /// <returns>A Basket document instance containing the updated basket.</returns>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="basketId"/> is null or empty.</exception>
+        /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         public Basket UpdateBillingAddress(string basketId, OrderAddress orderAddress, bool useAsDefault)
         {
             throw new NotImplementedException();
@@ -333,6 +367,7 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <param name="customerInfo">A CustomerInfo document instance containing the customer information.</param>
         /// <returns>A Basket document instance containing the updated basket.</returns>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="basketId"/> is null or empty.</exception>
+        /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         public Basket UpdateCustomerInfo(string basketId, CustomerInfo customerInfo)
         {
             throw new NotImplementedException();
@@ -347,6 +382,7 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <returns>A Basket document instance containing the updated basket.</returns>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="basketId"/> is null or empty.</exception>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="paymentInstrumentId"/> is null or empty.</exception>
+        /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         /// <remarks>Payment instruments are usually authorized after order creation, for example in a custom hook. The default payment authorization process executes an authorization when a payment instrument is added to an order or updated. See POST /orders/{order_no}/payment_instruments and PATCH /orders/{order_no}/payment_instruments/{payment_instrument_id}</remarks>
         public Basket UpdatePaymentInstrument(string basketId, string paymentInstrumentId, BasketPaymentInstrumentRequest paymentInstrument)
         {
@@ -361,6 +397,7 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <param name="productItem">A ProductItem document instance containing the product item.</param>
         /// <returns>A Basket document instance containing the updated basket.</returns>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="basketId"/> is null or empty.</exception>
+        /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         /// <remarks>
         /// <para>
         /// The following values in the request body are considered by the server:
@@ -392,6 +429,7 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <returns>A Basket document instance containing the updated basket.</returns>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="basketId"/> is null or empty.</exception>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="shipmentId"/> is null or empty.</exception>
+        /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         /// <remarks>
         /// <para>
         /// The shipment is initialized with values provided in the body document and can be updated with further data API calls. Considered from the body are the following properties if specified
@@ -413,12 +451,30 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <summary>
         /// Sets a shipping address of a specific shipment of a basket.
         /// </summary>
-        /// <param name="basketId"></param>
-        /// <param name="shipmentId"></param>
-        /// <param name="orderAddress"></param>
-        /// <param name="useAsBilling"></param>
-        /// <returns></returns>
+        /// <param name="basketId">The ID of the basket to be modified.</param>
+        /// <param name="shipmentId">The ID of the shipment to be modified.</param>
+        /// <param name="orderAddress">An OrderAddress document instance containing the address with or without a valid address ID.</param>
+        /// <param name="useAsBilling">The flag indicating whether the given address will also be used as billing address.</param>
+        /// <returns>A Basket document instance containing the updated basket.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="basketId"/> is null or empty.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="shipmentId"/> is null or empty.</exception>
+        /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         public Basket UpdateShippingAddress(string basketId, string shipmentId, OrderAddress orderAddress, bool useAsBilling)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Sets a shipping method to a specific shipment of a basket.
+        /// </summary>
+        /// <param name="basketId">The ID of the basket to be modified.</param>
+        /// <param name="shipmentId">The ID of the shipment to be modified.</param>
+        /// <param name="shippingMethod">A ShippingMethod document instance containing the shipping method.</param>
+        /// <returns>A Basket document instance containing the updated basket.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="basketId"/> is null or empty.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="shipmentId"/> is null or empty.</exception>
+        /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
+        public Basket UpdateShippingMethod(string basketId, string shipmentId, ShippingMethod shippingMethod)
         {
             throw new NotImplementedException();
         }

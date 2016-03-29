@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 
 namespace Net.Demandware.Ocapi.Documents.Common
@@ -9,6 +10,12 @@ namespace Net.Demandware.Ocapi.Documents.Common
     public sealed class CustomObject
     {
         #region Properties
+
+        /// <summary>
+        /// The custom object's custom attributes.
+        /// </summary>
+        [JsonExtensionData]
+        public IDictionary<string, object> CustomAttributes { get; set; }
 
         /// <summary>
         /// The id of the custom object when the type of the key is Integer.

@@ -84,11 +84,9 @@ namespace Net.Demandware.Ocapi.Resources.Base
                 [HttpRequestHeader.Host] = GetHostHeader(Configuration.Credentials.OAuthPath.Url)
             };
 
-            var response = ServiceManager.HttpPost(Configuration.Credentials.OAuthPath.Url, headers, data);
+            var response = ServiceManager.HttpPost<dynamic>(Configuration.Credentials.OAuthPath.Url, headers, data);
 
-            dynamic authenticationToken = JsonConvert.DeserializeObject(response);
-
-            return (string)authenticationToken.access_token;
+            return (string)response.access_token;
         }
 
         /// <summary>
@@ -108,9 +106,7 @@ namespace Net.Demandware.Ocapi.Resources.Base
                 [Constants.OCAPI_CLIENT_HEADER] = Configuration.Credentials.ClientId
             };
 
-            var response = ServiceManager.HttpPost(Configuration.ShopApiConfiguration.Url, headers, data);
-
-            var responseObject = JsonConvert.DeserializeObject<JwtToken>(response);
+            var response = ServiceManager.HttpPost<JwtToken>(Configuration.ShopApiConfiguration.Url, headers, data);
 
             var authorization = headers[HttpRequestHeader.Authorization];
             if (string.IsNullOrEmpty(authorization))
@@ -124,12 +120,27 @@ namespace Net.Demandware.Ocapi.Resources.Base
         }
 
         /// <summary>
+        /// Assembles a WebHeaderCollection containing the common headers for an unauthenticated Demandware API call.
+        /// </summary>
+        /// <param name="url">A String value containing the URL.</param>
+        /// <returns>A WebHeaderCollection instance containing the common headers.</returns>
+        protected WebHeaderCollection GetWebHeaders(string url)
+        {
+            var headers = new WebHeaderCollection
+            {
+                [HttpRequestHeader.Accept] = Constants.CONTENT_TYPE_JSON,
+                [HttpRequestHeader.ContentType] = Constants.CONTENT_TYPE_JSON,
+                [HttpRequestHeader.Host] = GetHostHeader(url)
+            };
+            return headers;
+        }
+
+        /// <summary>
         /// Assembles a WebHeaderCollection containing the common headers for a Demandware API call.
         /// </summary>
         /// <param name="url">A String value containing the URL.</param>
         /// <param name="authorization">A String value containing the DW authorization token.</param>
         /// <returns>A WebHeaderCollection instance containing the common headers.</returns>
-        /// <remarks>There's nothing special about this method; it just eliminates repeated code.</remarks>
         protected WebHeaderCollection GetWebHeaders(string url, string authorization)
         {
             var headers = new WebHeaderCollection

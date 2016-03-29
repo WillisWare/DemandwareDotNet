@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Specialized;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Runtime.Serialization;
 using System.Text;
-using Net.Demandware.Ocapi.Extensions;
+using Net.Demandware.Ocapi.Documents.Common;
+using Net.Demandware.Ocapi.Exceptions;
 using Newtonsoft.Json;
 
 namespace Net.Demandware.Ocapi.Resources.Common
@@ -94,9 +94,9 @@ namespace Net.Demandware.Ocapi.Resources.Common
             return returnValue;
         }
 
-        internal string HttpPatch(string url, WebHeaderCollection webHeaderCollection, byte[] data)
+        internal T HttpPatch<T>(string url, WebHeaderCollection webHeaderCollection, byte[] data)
         {
-            var result = string.Empty;
+            string result;
 
             try
             {
@@ -113,32 +113,34 @@ namespace Net.Demandware.Ocapi.Resources.Common
             }
             catch (WebException we)
             {
-                var responseBody = string.Empty;
-                if (we.Response != null)
+                if (we.Response == null)
                 {
-                    using (var reader = new StreamReader(we.Response.GetResponseStream()))
-                    {
-                        responseBody = reader.ReadToEnd();
-                    }
-
-                    result = responseBody;
+                    throw new ApiException(new Fault { Message = we.Message });
                 }
 
-                Trace.TraceError($"{we.Message}{responseBody.PrependIfNotNullOrEmpty(": ")}");
+                string responseBody;
+                using (var reader = new StreamReader(we.Response.GetResponseStream()))
+                {
+                    responseBody = reader.ReadToEnd();
+                }
+
+                result = responseBody;
+
+                var fault = JsonConvert.DeserializeObject<Fault>(result);
+
+                throw new ApiException(fault);
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
-
-                throw;
+                throw new ApiException(new Fault { Message = e.Message });
             }
 
-            return result;
+            return JsonConvert.DeserializeObject<T>(result);
         }
 
-        internal string HttpPatch(string url, WebHeaderCollection webHeaderCollection, NameValueCollection values)
+        internal T HttpPatch<T>(string url, WebHeaderCollection webHeaderCollection, NameValueCollection values)
         {
-            var result = string.Empty;
+            string result;
 
             try
             {
@@ -155,32 +157,34 @@ namespace Net.Demandware.Ocapi.Resources.Common
             }
             catch (WebException we)
             {
-                var responseBody = string.Empty;
-                if (we.Response != null)
+                if (we.Response == null)
                 {
-                    using (var reader = new StreamReader(we.Response.GetResponseStream()))
-                    {
-                        responseBody = reader.ReadToEnd();
-                    }
-
-                    result = responseBody;
+                    throw new ApiException(new Fault { Message = we.Message });
                 }
 
-                Trace.TraceError($"{we.Message}{responseBody.PrependIfNotNullOrEmpty(": ")}");
+                string responseBody;
+                using (var reader = new StreamReader(we.Response.GetResponseStream()))
+                {
+                    responseBody = reader.ReadToEnd();
+                }
+
+                result = responseBody;
+
+                var fault = JsonConvert.DeserializeObject<Fault>(result);
+
+                throw new ApiException(fault);
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
-
-                throw;
+                throw new ApiException(new Fault { Message = e.Message });
             }
 
-            return result;
+            return JsonConvert.DeserializeObject<T>(result);
         }
 
-        internal string HttpPost(string url, WebHeaderCollection webHeaderCollection, byte[] data)
+        internal T HttpPost<T>(string url, WebHeaderCollection webHeaderCollection, byte[] data)
         {
-            var result = string.Empty;
+            string result;
 
             try
             {
@@ -197,32 +201,34 @@ namespace Net.Demandware.Ocapi.Resources.Common
             }
             catch (WebException we)
             {
-                var responseBody = string.Empty;
-                if (we.Response != null)
+                if (we.Response == null)
                 {
-                    using (var reader = new StreamReader(we.Response.GetResponseStream()))
-                    {
-                        responseBody = reader.ReadToEnd();
-                    }
-
-                    result = responseBody;
+                    throw new ApiException(new Fault { Message = we.Message });
                 }
 
-                Trace.TraceError($"{we.Message}{responseBody.PrependIfNotNullOrEmpty(": ")}");
+                string responseBody;
+                using (var reader = new StreamReader(we.Response.GetResponseStream()))
+                {
+                    responseBody = reader.ReadToEnd();
+                }
+
+                result = responseBody;
+
+                var fault = JsonConvert.DeserializeObject<Fault>(result);
+
+                throw new ApiException(fault);
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
-
-                throw;
+                throw new ApiException(new Fault { Message = e.Message });
             }
 
-            return result;
+            return JsonConvert.DeserializeObject<T>(result);
         }
 
-        internal string HttpGet(string url, WebHeaderCollection webHeaderCollection)
+        internal T HttpGet<T>(string url, WebHeaderCollection webHeaderCollection)
         {
-            var result = string.Empty;
+            string result;
 
             try
             {
@@ -240,27 +246,29 @@ namespace Net.Demandware.Ocapi.Resources.Common
             }
             catch (WebException we)
             {
-                var responseBody = string.Empty;
-                if (we.Response != null)
+                if (we.Response == null)
                 {
-                    using (var reader = new StreamReader(we.Response.GetResponseStream()))
-                    {
-                        responseBody = reader.ReadToEnd();
-                    }
-
-                    result = responseBody;
+                    throw new ApiException(new Fault { Message = we.Message });
                 }
 
-                Trace.TraceError($"{we.Message}{responseBody.PrependIfNotNullOrEmpty(": ")}");
+                string responseBody;
+                using (var reader = new StreamReader(we.Response.GetResponseStream()))
+                {
+                    responseBody = reader.ReadToEnd();
+                }
+
+                result = responseBody;
+
+                var fault = JsonConvert.DeserializeObject<Fault>(result);
+
+                throw new ApiException(fault);
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
-
-                throw;
+                throw new ApiException(new Fault { Message = e.Message });
             }
 
-            return result;
+            return JsonConvert.DeserializeObject<T>(result);
         }
 
         private static void SetResponseHeaders(NameValueCollection responseHeaders, NameValueCollection requestHeaders)

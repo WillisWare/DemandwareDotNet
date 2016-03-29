@@ -179,10 +179,10 @@ namespace Net.Demandware.Ocapi.Documents.Base
         public CustomerInfo CustomerInfo { get; set; }
 
         /// <summary>
-        /// The order's custom properties.
+        /// The order's custom attributes.
         /// </summary>
         [JsonExtensionData]
-        public IDictionary<string, object> CustomProperties { get; set; }
+        public IDictionary<string, object> CustomAttributes { get; set; }
 
         /// <summary>
         /// The sorted array of gift certificate line items. This array can be empty.
