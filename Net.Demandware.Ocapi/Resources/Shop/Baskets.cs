@@ -57,6 +57,7 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <param name="paymentInstrument">A BasketPaymentInstrumentRequest document instance containing the payment instrument.</param>
         /// <returns>A Basket document instance containing the updated basket.</returns>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="basketId"/> is null or empty.</exception>
+        /// <remarks>Payment instruments are usually authorized after order creation, for example in a custom hook. The default payment authorization process executes an authorization when a payment instrument is added to an order or updated. See POST /orders/{order_no}/payment_instruments and PATCH /orders/{order_no}/payment_instruments/{payment_instrument_id}</remarks>
         public Basket AddPaymentInstrument(string basketId, BasketPaymentInstrumentRequest paymentInstrument)
         {
             throw new NotImplementedException();
@@ -81,6 +82,24 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <param name="productItem">A ProductItem document instance containing the product item.</param>
         /// <returns>A Basket document instance containing the updated basket.</returns>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="basketId"/> is null or empty.</exception>
+        /// <remarks>
+        /// The added item is associated with the specified shipment. If no shipment id is specified, the added item is associated with the default shipment.
+        /// <para>
+        /// Considered values from the request body are:
+        /// <list type="bullet">
+        /// <item><term>product_id</term><definition>a valid product id. This is the id of the product to be added to the basket.</definition></item>
+        /// <item><term>shipment_id</term><definition>a valid shipment id (optional). This is the id of the shipment in which the product item is created.</definition></item>
+        /// <item><term>quantity</term><definition>a number between 0.01 and 999. This is the quantity of the product to order.</definition></item>
+        /// <item><term>inventory_id</term><definition>a valid inventory id (optional). This is the id of the inventory from which the item is allocated.</definition></item>
+        /// <item><term>option_items/option_value_id</term><definition>
+        /// a valid option value id. This is an option value for an option item of an option product.
+        /// <para>
+        /// This is only possible if the product item is an option product. To set option values, you must specify a collection of option items in the option_items property. These option items must contain option_id and option_value_id. Also, the values you specify must be valid for the option product that this product item represents. Otherwise, the server throws an InvalidProductOptionItemException or an InvalidProductOptionValueItemException.</para>
+        /// </definition></item>
+        /// <item><term>custom properties in the form c_&lt;CUSTOM_NAME&gt;</term><definition>the custom property must correspond to a custom attribute (&lt;CUSTOM_NAME&gt;) defined for ProductLineItem. The value of this property must be valid for the type of custom attribute defined for ProductLineItem.</definition></item>
+        /// </list>
+        /// </para>
+        /// </remarks>
         public Basket AddProductItem(string basketId, ProductItem productItem)
         {
             throw new NotImplementedException();
@@ -135,6 +154,19 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <param name="shipment">A Shipment document instance containing the shipment.</param>
         /// <returns>A Basket document instance containing the updated basket.</returns>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="basketId"/> is null or empty.</exception>
+        /// <remarks>
+        /// <para>
+        /// The created shipment is initialized with values provided in the body document and can be updated with further data API calls. Considered from the body are the following properties if specified:
+        /// <list type="bullet">
+        /// <item><description>the id</description></item>
+        /// <item><description>the shipping address</description></item>
+        /// <item><description>the shipping method</description></item>
+        /// <item><description>gift boolean flag</description></item>
+        /// <item><description>gift message</description></item>
+        /// <item><description>custom properties</description></item>
+        /// </list>
+        /// </para>
+        /// </remarks>
         public Basket CreateShipment(string basketId, Shipment shipment)
         {
             throw new NotImplementedException();
@@ -294,6 +326,7 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <returns>A Basket document instance containing the updated basket.</returns>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="basketId"/> is null or empty.</exception>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="paymentInstrumentId"/> is null or empty.</exception>
+        /// <remarks>Payment instruments are usually authorized after order creation, for example in a custom hook. The default payment authorization process executes an authorization when a payment instrument is added to an order or updated. See POST /orders/{order_no}/payment_instruments and PATCH /orders/{order_no}/payment_instruments/{payment_instrument_id}</remarks>
         public Basket UpdatePaymentInstrument(string basketId, string paymentInstrumentId, BasketPaymentInstrumentRequest paymentInstrument)
         {
             throw new NotImplementedException();
@@ -307,6 +340,23 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <param name="productItem">A ProductItem document instance containing the product item.</param>
         /// <returns>A Basket document instance containing the updated basket.</returns>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="basketId"/> is null or empty.</exception>
+        /// <remarks>
+        /// <para>
+        /// The following values in the request body are considered by the server:
+        /// <list type="bullet">
+        /// <item><term>product_id</term><definition>a valid product id. This is the id of the product to be added to the basket.</definition></item>
+        /// <item><term>shipment_id</term><definition>a valid shipment id (optional). This is the id of the shipment in which the product item is created.</definition></item>
+        /// <item><term>quantity</term><definition>a number between 0.01 and 999. This is the quantity of the product to order.</definition></item>
+        /// <item><term>inventory_id</term><definition>a valid inventory id (optional). This is the id of the inventory from which the item is allocated.</definition></item>
+        /// <item><term>option_items/option_value_id</term><definition>
+        /// a valid option value id. This is an option value for an option item of an option product.
+        /// <para>
+        /// This is only possible if the product item is an option product. To set option values, you must specify a collection of option items in the option_items property. These option items must contain option_id and option_value_id. Also, the values you specify must be valid for the option product that this product item represents. Otherwise, the server throws an InvalidProductOptionItemException or an InvalidProductOptionValueItemException.</para>
+        /// </definition></item>
+        /// <item><term>custom properties in the form c_&lt;CUSTOM_NAME&gt;</term><definition>the custom property must correspond to a custom attribute (&lt;CUSTOM_NAME&gt;) defined for ProductLineItem. The value of this property must be valid for the type of custom attribute defined for ProductLineItem.</definition></item>
+        /// </list>
+        /// </para>
+        /// </remarks>
         public Basket UpdateProductItem(string basketId, string itemId, ProductItem productItem)
         {
             throw new NotImplementedException();
@@ -321,6 +371,19 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <returns>A Basket document instance containing the updated basket.</returns>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="basketId"/> is null or empty.</exception>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="shipmentId"/> is null or empty.</exception>
+        /// <remarks>
+        /// <para>
+        /// The shipment is initialized with values provided in the body document and can be updated with further data API calls. Considered from the body are the following properties if specified
+        /// <list type="bullet">
+        /// <item><description>the id</description></item>
+        /// <item><description>the shipping address</description></item>
+        /// <item><description>the shipping method</description></item>
+        /// <item><description>gift boolean flag</description></item>
+        /// <item><description>gift message</description></item>
+        /// <item><description>custom properties</description></item>
+        /// </list>
+        /// </para>
+        /// </remarks>
         public Basket UpdateShipment(string basketId, string shipmentId, Shipment shipment)
         {
             throw new NotImplementedException();

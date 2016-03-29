@@ -50,6 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\OcapiConfigurationSection.cs" />
+    <Compile Include="Configuration\OcapiNetworkPathElement.cs" />
+    <Compile Include="Configuration\OcapiSecurityElement.cs" />
     <Compile Include="Documents\Base\BaseAddress.cs" />
     <Compile Include="Documents\Base\BaseClass.cs" />
     <Compile Include="Documents\Base\BaseCustomer.cs" />
