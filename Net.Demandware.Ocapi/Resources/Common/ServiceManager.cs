@@ -284,9 +284,5 @@ namespace Net.Demandware.Ocapi.Resources.Common
         }
 
         #endregion
-
-        #region Properties
-
-        #endregion
     }
 }

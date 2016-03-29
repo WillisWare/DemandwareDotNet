@@ -98,4 +98,7 @@
 	<resheader name="writer">
 		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
 	</resheader>
+    <data name="Error_Missing_Basket_ID" xml:space="preserve">
+    <value>A valid basket ID must be provided.</value>
+  </data>
 </root>

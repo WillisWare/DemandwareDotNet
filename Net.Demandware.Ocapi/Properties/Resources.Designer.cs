@@ -59,5 +59,14 @@ namespace Net.Demandware.Ocapi.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A valid basket ID must be provided..
+        /// </summary>
+        internal static string Error_Missing_Basket_ID {
+            get {
+                return ResourceManager.GetString("Error_Missing_Basket_ID", resourceCulture);
+            }
+        }
     }
 }

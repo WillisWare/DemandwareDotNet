@@ -9,6 +9,12 @@ namespace Net.Demandware.Ocapi.Configuration
     {
         #region Properties
 
+        /// <summary>
+        /// Gets or sets the URL.
+        /// </summary>
+        [ConfigurationProperty("url", IsRequired = true)]
+        public string Url { get; set; }
+
         #endregion
     }
 }

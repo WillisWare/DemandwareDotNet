@@ -53,6 +53,7 @@
     <Compile Include="Configuration\OcapiConfigurationSection.cs" />
     <Compile Include="Configuration\OcapiNetworkPathElement.cs" />
     <Compile Include="Configuration\OcapiSecurityElement.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="Documents\Base\BaseAddress.cs" />
     <Compile Include="Documents\Base\BaseClass.cs" />
     <Compile Include="Documents\Base\BaseCustomer.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Documents\Base\BasePagedResult.cs" />
     <Compile Include="Documents\Base\BaseResult.cs" />
     <Compile Include="Documents\Common\CustomObject.cs" />
+    <Compile Include="Documents\Common\JwtToken.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Resources\Base\BaseResource.cs" />
     <Compile Include="Resources\Data\Campaigns.cs" />

@@ -1,6 +1,7 @@
 ﻿using System;
 using Net.Demandware.Ocapi.Documents.Shop;
 using Net.Demandware.Ocapi.Resources.Base;
+using Newtonsoft.Json;
 
 namespace Net.Demandware.Ocapi.Resources.Shop
 {
@@ -12,6 +13,15 @@ namespace Net.Demandware.Ocapi.Resources.Shop
     /// </remarks>
     public sealed class Baskets : BaseResource
     {
+        #region Members
+
+        /// <summary>
+        /// Defines the base path of the baskets API for URL-building.
+        /// </summary>
+        private const string BASE_PATH = "baskets/";
+
+        #endregion
+
         #region Methods
 
         /// <summary>
@@ -23,7 +33,18 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="basketId"/> is null or empty.</exception>
         public Basket AddCouponItem(string basketId, CouponItem couponItem)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(basketId))
+            {
+                throw new ArgumentNullException(nameof(basketId), Properties.Resources.Error_Missing_Basket_ID);
+            }
+
+            var couponUrl = $"{Configuration.ShopApiConfiguration.Url}{BASE_PATH}{basketId}/coupons";
+
+            var couponResponse = ServiceManager.HttpPost(couponUrl, GetWebHeaders(couponUrl, GetOcapiAuthorizationToken()), GetBytes(couponItem));
+
+            var returnValue = JsonConvert.DeserializeObject<Basket>(couponResponse);
+
+            return returnValue;
         }
 
         /// <summary>
