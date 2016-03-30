@@ -147,4 +147,10 @@
   <data name="Error_Folder_ID_Out_Of_Range" xml:space="preserve">
     <value>The content folder IDs array must contain fewer than 50 items.</value>
   </data>
+    <data name="Error_Missing_Customer_ID" xml:space="preserve">
+    <value>A valid customer ID must be provided.</value>
+  </data>
+    <data name="Error_Missing_Address_Name" xml:space="preserve">
+    <value>A valid address name must be provided.</value>
+  </data>
 </root>

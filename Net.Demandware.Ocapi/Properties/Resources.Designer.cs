@@ -70,6 +70,15 @@ namespace Net.Demandware.Ocapi.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A valid address name must be provided..
+        /// </summary>
+        internal static string Error_Missing_Address_Name {
+            get {
+                return ResourceManager.GetString("Error_Missing_Address_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A valid basket ID must be provided..
         /// </summary>
         internal static string Error_Missing_Basket_ID {
@@ -111,6 +120,15 @@ namespace Net.Demandware.Ocapi.Properties {
         internal static string Error_Missing_Custom_Object_Type {
             get {
                 return ResourceManager.GetString("Error_Missing_Custom_Object_Type", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A valid customer ID must be provided..
+        /// </summary>
+        internal static string Error_Missing_Customer_ID {
+            get {
+                return ResourceManager.GetString("Error_Missing_Customer_ID", resourceCulture);
             }
         }
         

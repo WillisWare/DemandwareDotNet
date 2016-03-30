@@ -59,7 +59,7 @@ namespace Net.Demandware.Ocapi.Resources.Base
         /// </summary>
         /// <param name="url">A String value containing the URL.</param>
         /// <returns>A String value containing the URL's host name.</returns>
-        private static string GetHostHeader(string url)
+        protected static string GetHostHeader(string url)
         {
             var uri = new Uri(url);
 
