@@ -113,22 +113,7 @@ namespace Net.Demandware.Ocapi.Resources.Common
             }
             catch (WebException we)
             {
-                if (we.Response == null)
-                {
-                    throw new ApiException(new Fault { Message = we.Message });
-                }
-
-                string responseBody;
-                using (var reader = new StreamReader(we.Response.GetResponseStream()))
-                {
-                    responseBody = reader.ReadToEnd();
-                }
-
-                result = responseBody;
-
-                var fault = JsonConvert.DeserializeObject<Fault>(result);
-
-                throw new ApiException(fault);
+                throw ProcessWebException(we);
             }
             catch (Exception e)
             {
@@ -157,22 +142,7 @@ namespace Net.Demandware.Ocapi.Resources.Common
             }
             catch (WebException we)
             {
-                if (we.Response == null)
-                {
-                    throw new ApiException(new Fault { Message = we.Message });
-                }
-
-                string responseBody;
-                using (var reader = new StreamReader(we.Response.GetResponseStream()))
-                {
-                    responseBody = reader.ReadToEnd();
-                }
-
-                result = responseBody;
-
-                var fault = JsonConvert.DeserializeObject<Fault>(result);
-
-                throw new ApiException(fault);
+                throw ProcessWebException(we);
             }
             catch (Exception e)
             {
@@ -201,22 +171,7 @@ namespace Net.Demandware.Ocapi.Resources.Common
             }
             catch (WebException we)
             {
-                if (we.Response == null)
-                {
-                    throw new ApiException(new Fault { Message = we.Message });
-                }
-
-                string responseBody;
-                using (var reader = new StreamReader(we.Response.GetResponseStream()))
-                {
-                    responseBody = reader.ReadToEnd();
-                }
-
-                result = responseBody;
-
-                var fault = JsonConvert.DeserializeObject<Fault>(result);
-
-                throw new ApiException(fault);
+                throw ProcessWebException(we);
             }
             catch (Exception e)
             {
@@ -246,22 +201,7 @@ namespace Net.Demandware.Ocapi.Resources.Common
             }
             catch (WebException we)
             {
-                if (we.Response == null)
-                {
-                    throw new ApiException(new Fault { Message = we.Message });
-                }
-
-                string responseBody;
-                using (var reader = new StreamReader(we.Response.GetResponseStream()))
-                {
-                    responseBody = reader.ReadToEnd();
-                }
-
-                result = responseBody;
-
-                var fault = JsonConvert.DeserializeObject<Fault>(result);
-
-                throw new ApiException(fault);
+                throw ProcessWebException(we);
             }
             catch (Exception e)
             {
@@ -269,6 +209,30 @@ namespace Net.Demandware.Ocapi.Resources.Common
             }
 
             return JsonConvert.DeserializeObject<T>(result);
+        }
+
+        private static ApiException ProcessWebException(WebException we)
+        {
+            if (we.Response == null)
+            {
+                return new ApiException(new Fault { Message = we.Message });
+            }
+
+            string responseBody;
+            var responseStream = we.Response.GetResponseStream();
+            if (responseStream == null)
+            {
+                return new ApiException(new Fault { Message = we.Message });
+            }
+
+            using (var reader = new StreamReader(responseStream))
+            {
+                responseBody = reader.ReadToEnd();
+            }
+
+            var fault = JsonConvert.DeserializeObject<Fault>(responseBody);
+
+            return new ApiException(fault);
         }
 
         private static void SetResponseHeaders(NameValueCollection responseHeaders, NameValueCollection requestHeaders)

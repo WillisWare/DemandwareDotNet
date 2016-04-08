@@ -50,7 +50,7 @@ namespace Net.Demandware.Ocapi.Resources.Shop
 
             var headers = GetWebHeaders(tokenUrl, Configuration.Credentials.ClientId);
 
-            var tokenResponse = ServiceManager.HttpPost<Customer>(tokenUrl, headers, null);
+            ServiceManager.HttpPost<Customer>(tokenUrl, headers, null);
 
             var authorization = headers[HttpRequestHeader.Authorization];
             if (string.IsNullOrEmpty(authorization))
@@ -155,7 +155,7 @@ namespace Net.Demandware.Ocapi.Resources.Shop
 
             var headers = GetWebHeaders(customerAuthUrl);
 
-            var response = ServiceManager.HttpPost<JwtToken>(customerAuthUrl, headers, GetBytes(requestBody));
+            ServiceManager.HttpPost<JwtToken>(customerAuthUrl, headers, GetBytes(requestBody));
 
             var authorization = headers[HttpRequestHeader.Authorization];
             if (string.IsNullOrEmpty(authorization))

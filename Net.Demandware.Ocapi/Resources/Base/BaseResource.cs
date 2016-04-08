@@ -106,7 +106,7 @@ namespace Net.Demandware.Ocapi.Resources.Base
                 [Constants.OCAPI_CLIENT_HEADER] = Configuration.Credentials.ClientId
             };
 
-            var response = ServiceManager.HttpPost<JwtToken>(Configuration.ShopApiConfiguration.Url, headers, data);
+            ServiceManager.HttpPost<JwtToken>(Configuration.ShopApiConfiguration.Url, headers, data);
 
             var authorization = headers[HttpRequestHeader.Authorization];
             if (string.IsNullOrEmpty(authorization))
