@@ -11,24 +11,45 @@ namespace Net.Demandware.Ocapi.Documents.Base
     /// </summary>
     public enum OrderChannelType
     {
+        /// <summary>
+        /// Indicates a storefront channel.
+        /// </summary>
         [EnumMember(Value = "storefront")]
         Storefront,
 
+        /// <summary>
+        /// Indicates a call center channel.
+        /// </summary>
         [EnumMember(Value = "callcenter")]
         CallCenter,
 
+        /// <summary>
+        /// Indicates a marketplace channel.
+        /// </summary>
         [EnumMember(Value = "marketplace")]
         Marketplace,
 
+        /// <summary>
+        /// Indicates a DSS channel.
+        /// </summary>
         [EnumMember(Value = "dss")]
         Dss,
 
+        /// <summary>
+        /// Indicates a store channel.
+        /// </summary>
         [EnumMember(Value = "store")]
         Store,
 
+        /// <summary>
+        /// Indicates a Pinterest channel.
+        /// </summary>
         [EnumMember(Value = "pinterest")]
         Pinterest,
 
+        /// <summary>
+        /// Indicates a Twitter channel.
+        /// </summary>
         [EnumMember(Value = "twitter")]
         Twitter
     }
@@ -38,9 +59,15 @@ namespace Net.Demandware.Ocapi.Documents.Base
     /// </summary>
     public enum OrderConfirmationStatus
     {
+        /// <summary>
+        /// Indicates a not confirmed status.
+        /// </summary>
         [EnumMember(Value = "not_confirmed")]
         NotConfirmed,
 
+        /// <summary>
+        /// Indicates a confirmed status.
+        /// </summary>
         [EnumMember(Value = "confirmed")]
         Confirmed
     }
@@ -50,15 +77,27 @@ namespace Net.Demandware.Ocapi.Documents.Base
     /// </summary>
     public enum OrderExportStatus
     {
+        /// <summary>
+        /// Indicates a not exported status.
+        /// </summary>
         [EnumMember(Value = "not_exported")]
         NotExported,
 
+        /// <summary>
+        /// Indicates an exported status.
+        /// </summary>
         [EnumMember(Value = "exported")]
         Exported,
 
+        /// <summary>
+        /// Indicates a ready-to-export status.
+        /// </summary>
         [EnumMember(Value = "ready")]
         Ready,
 
+        /// <summary>
+        /// Indicates a failed status.
+        /// </summary>
         [EnumMember(Value = "failed")]
         Failed
     }
@@ -68,12 +107,21 @@ namespace Net.Demandware.Ocapi.Documents.Base
     /// </summary>
     public enum OrderPaymentStatus
     {
+        /// <summary>
+        /// Indicates a not paid status.
+        /// </summary>
         [EnumMember(Value = "not_paid")]
         NotPaid,
 
+        /// <summary>
+        /// Indicates a partly paid status.
+        /// </summary>
         [EnumMember(Value = "part_paid")]
         PartPaid,
 
+        /// <summary>
+        /// Indicates a paid status.
+        /// </summary>
         [EnumMember(Value = "paid")]
         Paid
     }
@@ -83,12 +131,21 @@ namespace Net.Demandware.Ocapi.Documents.Base
     /// </summary>
     public enum OrderShippingStatus
     {
+        /// <summary>
+        /// Indicates a not shipped status.
+        /// </summary>
         [EnumMember(Value = "not_shipped")]
         NotShipped,
 
+        /// <summary>
+        /// Indicates a partly shipped status.
+        /// </summary>
         [EnumMember(Value = "part_shipped")]
         PartShipped,
 
+        /// <summary>
+        /// Indicates a shipped status.
+        /// </summary>
         [EnumMember(Value = "shipped")]
         Shipped
     }
@@ -98,24 +155,45 @@ namespace Net.Demandware.Ocapi.Documents.Base
     /// </summary>
     public enum OrderStatus
     {
+        /// <summary>
+        /// Indicates a created status.
+        /// </summary>
         [EnumMember(Value = "created")]
         Created,
 
+        /// <summary>
+        /// Indicates a new status.
+        /// </summary>
         [EnumMember(Value = "new")]
         New,
 
+        /// <summary>
+        /// Indicates an open status.
+        /// </summary>
         [EnumMember(Value = "open")]
         Open,
 
+        /// <summary>
+        /// Indicates a completed status.
+        /// </summary>
         [EnumMember(Value = "completed")]
         Completed,
 
+        /// <summary>
+        /// Indicates a canceled status.
+        /// </summary>
         [EnumMember(Value = "cancelled")]
-        Cancelled,
+        Canceled,
 
+        /// <summary>
+        /// Indicates a replaced status.
+        /// </summary>
         [EnumMember(Value = "replaced")]
         Replaced,
 
+        /// <summary>
+        /// Indicates a failed status.
+        /// </summary>
         [EnumMember(Value = "failed")]
         Failed
     }
@@ -125,9 +203,15 @@ namespace Net.Demandware.Ocapi.Documents.Base
     /// </summary>
     public enum OrderTaxationType
     {
+        /// <summary>
+        /// Indicates a gross taxation type.
+        /// </summary>
         [EnumMember(Value = "gross")]
         Gross,
 
+        /// <summary>
+        /// Indicates a net taxation type.
+        /// </summary>
         [EnumMember(Value = "net")]
         Net
     }
@@ -182,7 +266,7 @@ namespace Net.Demandware.Ocapi.Documents.Base
         /// The order's custom attributes.
         /// </summary>
         [JsonExtensionData]
-        public IDictionary<string, object> CustomAttributes { get; set; }
+        public new IDictionary<string, object> CustomAttributes { get; set; }
 
         /// <summary>
         /// The sorted array of gift certificate line items. This array can be empty.

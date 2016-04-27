@@ -8,12 +8,21 @@ namespace Net.Demandware.Ocapi.Documents.Shop
     /// </summary>
     public enum DiscountRequestType
     {
+        /// <summary>
+        /// Indicates a percentage type.
+        /// </summary>
         [EnumMember(Value = "percentage")]
         Percentage,
 
+        /// <summary>
+        /// Indicates a fixed price type.
+        /// </summary>
         [EnumMember(Value = "fixed_price")]
         FixedPrice,
 
+        /// <summary>
+        /// Indicates an amount type.
+        /// </summary>
         [EnumMember(Value = "amount")]
         Amount
     }

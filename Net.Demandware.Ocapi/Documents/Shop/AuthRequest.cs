@@ -8,15 +8,27 @@ namespace Net.Demandware.Ocapi.Documents.Shop
     /// </summary>
     public enum AuthRequestType
     {
+        /// <summary>
+        /// Indicates a guest authorization.
+        /// </summary>
         [EnumMember(Value = "guest")]
         Guest,
 
+        /// <summary>
+        /// Indicates a credentials authorization.
+        /// </summary>
         [EnumMember(Value = "credentials")]
         Credentials,
 
+        /// <summary>
+        /// Indicates a refresh authorization.
+        /// </summary>
         [EnumMember(Value = "refresh")]
         Refresh,
 
+        /// <summary>
+        /// Indicates a session authorization.
+        /// </summary>
         [EnumMember(Value = "session")]
         Session
     }

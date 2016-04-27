@@ -9,9 +9,15 @@ namespace Net.Demandware.Ocapi.Documents.Shop
     /// </summary>
     public enum ShipmentShippingStatus
     {
+        /// <summary>
+        /// Indicates a not shipped status.
+        /// </summary>
         [EnumMember(Value = "not_shipped")]
         NotShipped,
 
+        /// <summary>
+        /// Indicates a shipped status.
+        /// </summary>
         [EnumMember(Value = "shipped")]
         Shipped
     }

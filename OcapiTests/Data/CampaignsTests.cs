@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace OcapiTests.Data
+namespace Net.Demandware.Ocapi.Tests.Data
 {
     /// <summary>
     /// Summary description for CampaignsTests

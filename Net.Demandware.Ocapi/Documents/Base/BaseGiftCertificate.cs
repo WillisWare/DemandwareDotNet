@@ -8,15 +8,27 @@ namespace Net.Demandware.Ocapi.Documents.Base
     /// </summary>
     public enum GiftCertificateStatus
     {
+        /// <summary>
+        /// Indicates a gift certificate in a pending (not issued) status.
+        /// </summary>
         [EnumMember(Value = "pending")]
         Pending,
 
+        /// <summary>
+        /// Indicates a gift certificate in an issued status.
+        /// </summary>
         [EnumMember(Value = "issued")]
         Issued,
 
+        /// <summary>
+        /// Indicates a gift certificate in a partially redeemed status.
+        /// </summary>
         [EnumMember(Value = "partially_redeemed")]
         PartiallyRedeemed,
 
+        /// <summary>
+        /// Indicates a gift certificate in a redeemed status.
+        /// </summary>
         [EnumMember(Value = "redeemed")]
         Redeemed
     }

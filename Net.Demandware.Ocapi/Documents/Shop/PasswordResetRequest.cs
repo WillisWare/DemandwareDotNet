@@ -8,9 +8,15 @@ namespace Net.Demandware.Ocapi.Documents.Shop
     /// </summary>
     public enum PasswordResetIdentificationType
     {
+        /// <summary>
+        /// Indicates an e-mail type.
+        /// </summary>
         [EnumMember(Value = "email")]
         Email,
 
+        /// <summary>
+        /// Indicates a login type.
+        /// </summary>
         [EnumMember(Value = "login")]
         Login
     }

@@ -4,6 +4,9 @@ using Newtonsoft.Json;
 
 namespace Net.Demandware.Ocapi.Documents.Shop
 {
+    /// <summary>
+    /// Represents a bundled product item data.
+    /// </summary>
     public sealed class BundledProductItem
     {
         #region Properties

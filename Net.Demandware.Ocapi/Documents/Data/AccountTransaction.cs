@@ -9,18 +9,33 @@ namespace Net.Demandware.Ocapi.Documents.Data
     /// </summary>
     public enum AccountTransactionType
     {
+        /// <summary>
+        /// Indicates a create transaction.
+        /// </summary>
         [EnumMember(Value = "create")]
         Create,
 
+        /// <summary>
+        /// Indicates a redeem transaction.
+        /// </summary>
         [EnumMember(Value = "redeem")]
         Redeem,
 
+        /// <summary>
+        /// Indicates a delete transaction.
+        /// </summary>
         [EnumMember(Value = "delete")]
         Delete,
 
+        /// <summary>
+        /// Indicates an enable transaction.
+        /// </summary>
         [EnumMember(Value = "enable")]
         Enable,
 
+        /// <summary>
+        /// Indicates a disable transaction.
+        /// </summary>
         [EnumMember(Value = "disable")]
         Disable
     }

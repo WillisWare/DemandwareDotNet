@@ -8,30 +8,57 @@ namespace Net.Demandware.Ocapi.Documents.Shop
     /// </summary>
     public enum DiscountType
     {
+        /// <summary>
+        /// Indicates a percentage type.
+        /// </summary>
         [EnumMember(Value = "percentage")]
         Percentage,
 
+        /// <summary>
+        /// Indicates a fixed price type.
+        /// </summary>
         [EnumMember(Value = "fixed_price")]
         FixedPrice,
 
+        /// <summary>
+        /// Indicates an amount type.
+        /// </summary>
         [EnumMember(Value = "amount")]
         Amount,
 
+        /// <summary>
+        /// Indicates a free type.
+        /// </summary>
         [EnumMember(Value = "free")]
         Free,
 
+        /// <summary>
+        /// Indicates a price type.
+        /// </summary>
         [EnumMember(Value = "price_book_price")]
         PriceBookPrice,
 
+        /// <summary>
+        /// Indicates a bonus type.
+        /// </summary>
         [EnumMember(Value = "bonus")]
         Bonus,
 
+        /// <summary>
+        /// Indicates a fixed price type.
+        /// </summary>
         [EnumMember(Value = "total_fixed_price")]
         TotalFixedPrice,
 
+        /// <summary>
+        /// Indicates a bonus choice type.
+        /// </summary>
         [EnumMember(Value = "bonus_choice")]
         BonusChoice,
 
+        /// <summary>
+        /// Indicates a percentage off options type.
+        /// </summary>
         [EnumMember(Value = "percentage_off_options")]
         PercentageOffOptions
     }

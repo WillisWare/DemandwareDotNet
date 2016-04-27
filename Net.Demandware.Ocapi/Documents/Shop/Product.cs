@@ -35,6 +35,9 @@ namespace Net.Demandware.Ocapi.Documents.Shop
         [JsonProperty(PropertyName = "ean")]
         public string EuropeanArticleNumber { get; set; }
 
+        /// <summary>
+        /// Gets or sets the ID.
+        /// </summary>
         [JsonProperty(PropertyName = "id", Required = Required.DisallowNull)]
         [StringLength(100, MinimumLength = 1)]
         public string Id { get; set; }

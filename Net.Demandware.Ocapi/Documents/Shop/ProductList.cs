@@ -8,21 +8,39 @@ namespace Net.Demandware.Ocapi.Documents.Shop
     /// </summary>
     public enum ProductListType
     {
+        /// <summary>
+        /// Indicates a wish list type.
+        /// </summary>
         [EnumMember(Value = "wish_list")]
         WishList,
 
+        /// <summary>
+        /// Indicates a gift registry type.
+        /// </summary>
         [EnumMember(Value = "gift_registry")]
         GiftRegistry,
 
+        /// <summary>
+        /// Indicates a shopping list type.
+        /// </summary>
         [EnumMember(Value = "shopping_list")]
         ShoppingList,
 
+        /// <summary>
+        /// Indicates a custom (1) type.
+        /// </summary>
         [EnumMember(Value = "custom_1")]
         Custom1,
 
+        /// <summary>
+        /// Indicates a custom (2) type.
+        /// </summary>
         [EnumMember(Value = "custom_2")]
         Custom2,
 
+        /// <summary>
+        /// Indicates a custom (3) type.
+        /// </summary>
         [EnumMember(Value = "custom_3")]
         Custom3
     }

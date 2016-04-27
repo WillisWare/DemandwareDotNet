@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace OcapiTests.Shop
+namespace Net.Demandware.Ocapi.Tests.Shop
 {
     /// <summary>
     /// Summary description for BasketsTests

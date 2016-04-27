@@ -10,9 +10,15 @@ namespace Net.Demandware.Ocapi.Documents.Shop
     /// </summary>
     public enum SiteStatus
     {
+        /// <summary>
+        /// Indicates an online status.
+        /// </summary>
         [EnumMember(Value = "online")]
         Online,
 
+        /// <summary>
+        /// Indicates an offline status.
+        /// </summary>
         [EnumMember(Value = "offline")]
         Offline
     }

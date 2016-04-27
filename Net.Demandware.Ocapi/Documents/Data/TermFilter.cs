@@ -9,27 +9,51 @@ namespace Net.Demandware.Ocapi.Documents.Data
     /// </summary>
     public enum TermFilterOperator
     {
+        /// <summary>
+        /// Indicates an IS operator.
+        /// </summary>
         [EnumMember(Value = "is")]
         Is,
 
+        /// <summary>
+        /// Indicates a ONE OF operator.
+        /// </summary>
         [EnumMember(Value = "one_of")]
         OneOf,
 
+        /// <summary>
+        /// Indicates an IS NULL operator.
+        /// </summary>
         [EnumMember(Value = "is_null")]
         IsNull,
 
+        /// <summary>
+        /// Indicates an IS NOT NULL operator.
+        /// </summary>
         [EnumMember(Value = "is_not_null")]
         IsNotNull,
 
+        /// <summary>
+        /// Indicates a LESS THAN operator.
+        /// </summary>
         [EnumMember(Value = "less")]
         Less,
 
+        /// <summary>
+        /// Indicates a GREATER THAN operator.
+        /// </summary>
         [EnumMember(Value = "greater")]
         Greater,
 
+        /// <summary>
+        /// Indicates a NOT IN operator.
+        /// </summary>
         [EnumMember(Value = "not_in")]
         NotIn,
 
+        /// <summary>
+        /// Indicates a NOT EQUAL operator.
+        /// </summary>
         [EnumMember(Value = "neq")]
         NotEqual
     }

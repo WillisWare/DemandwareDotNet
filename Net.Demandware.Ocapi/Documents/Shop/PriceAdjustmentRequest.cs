@@ -8,12 +8,21 @@ namespace Net.Demandware.Ocapi.Documents.Shop
     /// </summary>
     public enum PriceAdjustmentLevel
     {
+        /// <summary>
+        /// Indicates a product level.
+        /// </summary>
         [EnumMember(Value = "product")]
         Product,
 
+        /// <summary>
+        /// Indicates a shipping level.
+        /// </summary>
         [EnumMember(Value = "shipping")]
         Shipping,
 
+        /// <summary>
+        /// Indicates an order level.
+        /// </summary>
         [EnumMember(Value = "order")]
         Order
     }

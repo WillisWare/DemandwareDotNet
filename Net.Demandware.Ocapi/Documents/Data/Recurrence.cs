@@ -9,24 +9,45 @@ namespace Net.Demandware.Ocapi.Documents.Data
     /// </summary>
     public enum RecurrenceDayOfWeek
     {
+        /// <summary>
+        /// Indicates Monday.
+        /// </summary>
         [EnumMember(Value = "monday")]
         Monday,
 
+        /// <summary>
+        /// Indicates Tuesday.
+        /// </summary>
         [EnumMember(Value = "tuesday")]
         Tuesday,
 
+        /// <summary>
+        /// Indicates Wednesday.
+        /// </summary>
         [EnumMember(Value = "wednesday")]
         Wednesday,
 
+        /// <summary>
+        /// Indicates Thursday.
+        /// </summary>
         [EnumMember(Value = "thursday")]
         Thursday,
 
+        /// <summary>
+        /// Indicates Friday.
+        /// </summary>
         [EnumMember(Value = "friday")]
         Friday,
 
+        /// <summary>
+        /// Indicates Saturday.
+        /// </summary>
         [EnumMember(Value = "saturday")]
         Saturday,
 
+        /// <summary>
+        /// Indicates Sunday.
+        /// </summary>
         [EnumMember(Value = "sunday")]
         Sunday
     }

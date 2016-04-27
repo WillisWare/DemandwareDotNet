@@ -9,6 +9,9 @@ namespace Net.Demandware.Ocapi.Configuration
     {
         #region Properties
 
+        /// <summary>
+        /// Gets or sets the credentials configuration.
+        /// </summary>
         [ConfigurationProperty("credentials", IsRequired = true)]
         public OcapiSecurityElement Credentials
         {
@@ -16,6 +19,9 @@ namespace Net.Demandware.Ocapi.Configuration
             set { this["credentials"] = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the data API configuration.
+        /// </summary>
         [ConfigurationProperty("dataApi", IsRequired = true)]
         public OcapiNetworkPathElement DataApiConfiguration
         {
@@ -23,6 +29,9 @@ namespace Net.Demandware.Ocapi.Configuration
             set { this["dataApi"] = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the shop API configuration.
+        /// </summary>
         [ConfigurationProperty("shopApi", IsRequired = true)]
         public OcapiNetworkPathElement ShopApiConfiguration
         {

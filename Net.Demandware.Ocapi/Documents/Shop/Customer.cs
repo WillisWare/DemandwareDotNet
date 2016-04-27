@@ -11,9 +11,15 @@ namespace Net.Demandware.Ocapi.Documents.Shop
     /// </summary>
     public enum CustomerAuthType
     {
+        /// <summary>
+        /// Indicates a guest type.
+        /// </summary>
         [EnumMember(Value = "guest")]
         Guest,
 
+        /// <summary>
+        /// Indicates a registered type.
+        /// </summary>
         [EnumMember(Value = "registered")]
         Registered
     }

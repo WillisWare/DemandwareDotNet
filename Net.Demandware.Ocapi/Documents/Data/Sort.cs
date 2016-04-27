@@ -8,9 +8,15 @@ namespace Net.Demandware.Ocapi.Documents.Data
     /// </summary>
     public enum SortOrderDirection
     {
+        /// <summary>
+        /// Indicates ascending order.
+        /// </summary>
         [EnumMember(Value = "asc")]
         Ascending,
 
+        /// <summary>
+        /// Indicates descending order.
+        /// </summary>
         [EnumMember(Value = "desc")]
         Descending
     }

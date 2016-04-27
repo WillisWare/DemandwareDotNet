@@ -8,9 +8,15 @@ namespace Net.Demandware.Ocapi.Documents.Shop
     /// </summary>
     public enum ProductListItemType
     {
+        /// <summary>
+        /// Indicates a product type.
+        /// </summary>
         [EnumMember(Value = "product")]
         Product,
 
+        /// <summary>
+        /// Indicates a gift certificate type.
+        /// </summary>
         [EnumMember(Value = "gift_certificate")]
         GiftCertificate
     }

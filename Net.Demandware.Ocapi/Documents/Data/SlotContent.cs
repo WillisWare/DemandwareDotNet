@@ -9,18 +9,33 @@ namespace Net.Demandware.Ocapi.Documents.Data
     /// </summary>
     public enum SlotContentType
     {
+        /// <summary>
+        /// Indicates a products slot.
+        /// </summary>
         [EnumMember(Value = "products")]
         Products,
 
+        /// <summary>
+        /// Indicates a categories slot.
+        /// </summary>
         [EnumMember(Value = "categories")]
         Categories,
 
+        /// <summary>
+        /// Indicates a content assets slot.
+        /// </summary>
         [EnumMember(Value = "content_assets")]
         ContentAssets,
 
+        /// <summary>
+        /// Indicates an HTML slot.
+        /// </summary>
         [EnumMember(Value = "html")]
         Html,
 
+        /// <summary>
+        /// Indicates a recommended products slot.
+        /// </summary>
         [EnumMember(Value = "recommended_products")]
         RecommendedProducts
     }

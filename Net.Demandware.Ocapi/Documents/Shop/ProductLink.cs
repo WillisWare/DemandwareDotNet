@@ -8,27 +8,51 @@ namespace Net.Demandware.Ocapi.Documents.Shop
     /// </summary>
     public enum ProductLinkType
     {
+        /// <summary>
+        /// Indicates a cross-sell type.
+        /// </summary>
         [EnumMember(Value = "cross_sell")]
         CrossSell,
 
+        /// <summary>
+        /// Indicates a replacement type.
+        /// </summary>
         [EnumMember(Value = "replacement")]
         Replacement,
 
+        /// <summary>
+        /// Indicates an upsell type.
+        /// </summary>
         [EnumMember(Value = "up_sell")]
         UpSell,
 
+        /// <summary>
+        /// Indicates an accessory type.
+        /// </summary>
         [EnumMember(Value = "accessory")]
         Accessory,
 
+        /// <summary>
+        /// Indicates a newer version type.
+        /// </summary>
         [EnumMember(Value = "newer_version")]
         NewerVersion,
 
+        /// <summary>
+        /// Indicates an alternate unit type.
+        /// </summary>
         [EnumMember(Value = "alt_orderunit")]
         AlternateOrderUnit,
 
+        /// <summary>
+        /// Indicates a spare part type.
+        /// </summary>
         [EnumMember(Value = "spare_part")]
         SparePart,
 
+        /// <summary>
+        /// Indicates an "other" type.
+        /// </summary>
         [EnumMember(Value = "other")]
         Other
     }

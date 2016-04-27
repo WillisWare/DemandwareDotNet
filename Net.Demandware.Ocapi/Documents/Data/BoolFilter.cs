@@ -9,12 +9,21 @@ namespace Net.Demandware.Ocapi.Documents.Data
     /// </summary>
     public enum BoolFilterOperator
     {
+        /// <summary>
+        /// Indicates an AND operator.
+        /// </summary>
         [EnumMember(Value = "and")]
         And,
 
+        /// <summary>
+        /// Indicates an OR operator.
+        /// </summary>
         [EnumMember(Value = "or")]
         Or,
 
+        /// <summary>
+        /// Indicates a NOT operator.
+        /// </summary>
         [EnumMember(Value = "not")]
         Not
     }

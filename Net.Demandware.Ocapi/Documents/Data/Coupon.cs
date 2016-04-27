@@ -10,12 +10,21 @@ namespace Net.Demandware.Ocapi.Documents.Data
     /// </summary>
     public enum CouponType
     {
+        /// <summary>
+        /// Indicates a single code coupon.
+        /// </summary>
         [EnumMember(Value = "single_code")]
         SingleCode,
 
+        /// <summary>
+        /// Indicates a multiple code coupon.
+        /// </summary>
         [EnumMember(Value = "multiple_codes")]
         MultipleCodes,
 
+        /// <summary>
+        /// Indicates a system code coupon.
+        /// </summary>
         [EnumMember(Value = "system_codes")]
         SystemCodes
     }
