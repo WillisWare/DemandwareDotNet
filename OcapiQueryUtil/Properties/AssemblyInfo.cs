@@ -1,16 +1,15 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DemandwareQueryUtil")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Demandware OCAPI Query Utility")]
+[assembly: AssemblyDescription("OCAPI query utility for the DemandwareDotNet project.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("DemandwareQueryUtil")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
+[assembly: AssemblyCompany("WillisWare (open source)")]
+[assembly: AssemblyProduct("DemandwareDotNet")]
+[assembly: AssemblyCopyright("Copyright © 2016 by WillisWare")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

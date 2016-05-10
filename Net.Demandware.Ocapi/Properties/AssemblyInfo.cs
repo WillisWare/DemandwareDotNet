@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Demandware OCAPI .NET Wrapper")]
 [assembly: AssemblyDescription("Wrapper library for Demandware OCAPI services as a dependent assembly for project references.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("New Balance (open source)")]
+[assembly: AssemblyCompany("WillisWare (open source)")]
 [assembly: AssemblyProduct("Demandware .NET Client")]
-[assembly: AssemblyCopyright("Copyright © 2016 by New Balance Athletics, Inc.")]
+[assembly: AssemblyCopyright("Copyright © 2016 by WillisWare")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
