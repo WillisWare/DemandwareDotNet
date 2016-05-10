@@ -59,5 +59,113 @@ namespace Net.Demandware.Ocapi.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The content folder IDs array must contain fewer than 50 items..
+        /// </summary>
+        internal static string Error_Folder_ID_Out_Of_Range {
+            get {
+                return ResourceManager.GetString("Error_Folder_ID_Out_Of_Range", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A valid address name must be provided..
+        /// </summary>
+        internal static string Error_Missing_Address_Name {
+            get {
+                return ResourceManager.GetString("Error_Missing_Address_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A valid basket ID must be provided..
+        /// </summary>
+        internal static string Error_Missing_Basket_ID {
+            get {
+                return ResourceManager.GetString("Error_Missing_Basket_ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A valid category ID must be provided..
+        /// </summary>
+        internal static string Error_Missing_Category_ID {
+            get {
+                return ResourceManager.GetString("Error_Missing_Category_ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A valid content asset ID must be provided..
+        /// </summary>
+        internal static string Error_Missing_Content_ID {
+            get {
+                return ResourceManager.GetString("Error_Missing_Content_ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A valid key attribute value must be provided..
+        /// </summary>
+        internal static string Error_Missing_Custom_Object_Key {
+            get {
+                return ResourceManager.GetString("Error_Missing_Custom_Object_Key", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A valid custom object type must be provided..
+        /// </summary>
+        internal static string Error_Missing_Custom_Object_Type {
+            get {
+                return ResourceManager.GetString("Error_Missing_Custom_Object_Type", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A valid customer ID must be provided..
+        /// </summary>
+        internal static string Error_Missing_Customer_ID {
+            get {
+                return ResourceManager.GetString("Error_Missing_Customer_ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A valid content folder ID must be provided..
+        /// </summary>
+        internal static string Error_Missing_Folder_ID {
+            get {
+                return ResourceManager.GetString("Error_Missing_Folder_ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A valid query string must be provided..
+        /// </summary>
+        internal static string Error_Missing_Query_String {
+            get {
+                return ResourceManager.GetString("Error_Missing_Query_String", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Query count must be greater than 1 and less than 200..
+        /// </summary>
+        internal static string Error_Query_Count_Out_Of_Range {
+            get {
+                return ResourceManager.GetString("Error_Query_Count_Out_Of_Range", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Query string must be 50 characters or fewer..
+        /// </summary>
+        internal static string Error_Query_String_Length {
+            get {
+                return ResourceManager.GetString("Error_Query_String_Length", resourceCulture);
+            }
+        }
     }
 }

@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Demandware OCAPI .NET Wrapper")]
 [assembly: AssemblyDescription("Wrapper library for Demandware OCAPI services as a dependent assembly for project references.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("New Balance (open source)")]
+[assembly: AssemblyCompany("WillisWare (open source)")]
 [assembly: AssemblyProduct("Demandware .NET Client")]
-[assembly: AssemblyCopyright("Copyright © 2016 by New Balance Athletics, Inc.")]
+[assembly: AssemblyCopyright("Copyright © 2016 by WillisWare")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("16.2.0.0")]
+[assembly: AssemblyVersion("16.3.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
