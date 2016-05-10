@@ -14,7 +14,7 @@ namespace Net.Demandware.Ocapi.Documents.Data
         /// <summary>
         /// The count of search hits to include in the result.
         /// </summary>
-        [JsonProperty(PropertyName = "count")]
+        [JsonProperty(PropertyName = "count", NullValueHandling = NullValueHandling.Ignore)]
         [Range(1, 200)]
         public int Count { get; set; }
 
@@ -27,7 +27,7 @@ namespace Net.Demandware.Ocapi.Documents.Data
         /// <summary>
         /// The query arguments.
         /// </summary>
-        [JsonProperty(PropertyName = "query_args")]
+        [JsonProperty(PropertyName = "query_args", NullValueHandling = NullValueHandling.Ignore)]
         public IEnumerable<string> QueryArguments { get; set; }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace Net.Demandware.Ocapi.Documents.Data
         /// <summary>
         /// The sort string.
         /// </summary>
-        [JsonProperty(PropertyName = "sort")]
+        [JsonProperty(PropertyName = "sort", NullValueHandling = NullValueHandling.Ignore)]
         public string Sort { get; set; }
 
         /// <summary>

@@ -74,6 +74,7 @@
     <Compile Include="Documents\Common\CustomObject.cs" />
     <Compile Include="Documents\Common\JwtToken.cs" />
     <Compile Include="Exceptions\ApiException.cs" />
+    <Compile Include="Exceptions\DemandwareException.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Resources\Base\BaseResource.cs" />

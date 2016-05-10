@@ -230,9 +230,9 @@ namespace Net.Demandware.Ocapi.Resources.Common
                 responseBody = reader.ReadToEnd();
             }
 
-            var fault = JsonConvert.DeserializeObject<Fault>(responseBody);
+            var exception = JsonConvert.DeserializeObject<DemandwareException>(responseBody);
 
-            return new ApiException(fault);
+            return new ApiException(exception.Fault);
         }
 
         private static void SetResponseHeaders(NameValueCollection responseHeaders, NameValueCollection requestHeaders)

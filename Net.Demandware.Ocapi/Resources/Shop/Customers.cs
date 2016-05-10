@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Net;
+using System.Web;
 using Net.Demandware.Ocapi.Documents.Common;
 using Net.Demandware.Ocapi.Documents.Shop;
 using Net.Demandware.Ocapi.Exceptions;
@@ -207,7 +208,13 @@ namespace Net.Demandware.Ocapi.Resources.Shop
                 throw new ArgumentNullException(nameof(customerId), Properties.Resources.Error_Missing_Customer_ID);
             }
 
-            throw new NotImplementedException();
+            var customerUrl = $"{Configuration.ShopApiConfiguration.Url}{BASE_PATH}{HttpUtility.UrlEncode(customerId)}";
+
+            var headers = GetWebHeaders(customerUrl, GetOcapiJwtToken());
+
+            var customerResponse = ServiceManager.HttpGet<Customer>(customerUrl, headers);
+
+            return customerResponse;
         }
 
         /// <summary>

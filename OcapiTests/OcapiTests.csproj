@@ -66,6 +66,7 @@
     <Compile Include="Data\CampaignsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shop\BasketsTests.cs" />
+    <Compile Include="Shop\CustomersTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
