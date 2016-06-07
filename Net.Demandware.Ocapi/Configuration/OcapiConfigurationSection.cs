@@ -20,6 +20,11 @@ namespace Net.Demandware.Ocapi.Configuration
         public const string DATA_API_KEY = "dataApi";
 
         /// <summary>
+        /// Specifies the name of the Organizational API element.
+        /// </summary>
+        public const string ORG_API_KEY = "organizationApi";
+
+        /// <summary>
         /// Specifies the name of the Shop API element.
         /// </summary>
         public const string SHOP_API_KEY = "shopApi";
@@ -46,6 +51,16 @@ namespace Net.Demandware.Ocapi.Configuration
         {
             get { return (OcapiNetworkPathElement)this[DATA_API_KEY]; }
             set { this[DATA_API_KEY] = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the organizational API configuration.
+        /// </summary>
+        [ConfigurationProperty(ORG_API_KEY, IsRequired = true)]
+        public OcapiNetworkPathElement OrganizationApiConfiguration
+        {
+            get { return (OcapiNetworkPathElement)this[ORG_API_KEY]; }
+            set { this[ORG_API_KEY] = value; }
         }
 
         /// <summary>

@@ -58,13 +58,17 @@ namespace Net.Demandware.Ocapi.Util
                 var result = resource.Search(new CustomerSearchRequest
                 {
                     Count = 10,
-                    Query = $"email = '{customerId}'",
+                    Query = $"email ILIKE '{customerId}'",
                     Select = "(**)",
                     StartIndex = 0
                 });
-                Console.WriteLine($"{result.Data.Count()} customer(s) matched your criteria.");
-                var customer = result.Data.First();
-                Console.WriteLine($"The first customer is {customer.LastName}, {customer.FirstName}: {customer.Email} (ID: {customer.Id})");
+                Console.WriteLine($"{result.Count} customer(s) matched your criteria.");
+
+                if (result.Count > 0)
+                {
+                    var customer = result.Data.First();
+                    Console.WriteLine($"The first customer is {customer.LastName}, {customer.FirstName}: {customer.Email} (ID: {customer.Id})");
+                }
             }
             catch (Exception ex)
             {
