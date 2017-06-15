@@ -13,15 +13,6 @@ namespace Net.Demandware.Ocapi.Resources.Shop
     /// <remarks>Does not have to authenticate the customer.</remarks>
     public sealed class Categories : BaseResource
     {
-        #region Members
-
-        /// <summary>
-        /// Defines the base path of the categories API for URL-building.
-        /// </summary>
-        private const string BASE_PATH = "categories/";
-
-        #endregion
-
         #region Methods
 
         /// <summary>
@@ -46,7 +37,7 @@ namespace Net.Demandware.Ocapi.Resources.Shop
                 throw new ArgumentNullException(nameof(categoryIds), Properties.Resources.Error_Missing_Category_ID);
             }
 
-            var categoriesUrl = $"{Configuration.ShopApiConfiguration.Url}{BASE_PATH}({categoryIds.Aggregate((source, next) => source + "," + next)})?levels={levels}&locale={locale}";
+            var categoriesUrl = $"{Configuration.ShopApiConfiguration.Url}{BasePath}({categoryIds.Aggregate((source, next) => source + "," + next)})?levels={levels}&locale={locale}";
 
             var headers = GetWebHeaders(categoriesUrl);
 
@@ -72,7 +63,7 @@ namespace Net.Demandware.Ocapi.Resources.Shop
                 throw new ArgumentNullException(nameof(categoryId), Properties.Resources.Error_Missing_Category_ID);
             }
 
-            var categoryUrl = $"{Configuration.ShopApiConfiguration.Url}{BASE_PATH}{categoryId}?levels={levels}&locale={locale}";
+            var categoryUrl = $"{Configuration.ShopApiConfiguration.Url}{BasePath}{categoryId}?levels={levels}&locale={locale}";
 
             var headers = GetWebHeaders(categoryUrl);
 
@@ -80,6 +71,15 @@ namespace Net.Demandware.Ocapi.Resources.Shop
 
             return categoryResponse;
         }
+
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// Gets the base resource path.
+        /// </summary>
+        public override string BasePath { get; } = "categories/";
 
         #endregion
     }

@@ -10,15 +10,6 @@ namespace Net.Demandware.Ocapi.Resources.Shop
     /// <remarks>Does not have to authenticate the customer.</remarks>
     public sealed class ContentSearch : BaseResource
     {
-        #region Members
-
-        /// <summary>
-        /// Defines the base path of the content search API for URL-building.
-        /// </summary>
-        private const string BASE_PATH = "content_search";
-
-        #endregion
-
         #region Methods
 
         /// <summary>
@@ -65,7 +56,7 @@ namespace Net.Demandware.Ocapi.Resources.Shop
                 throw new ArgumentOutOfRangeException(nameof(count), Properties.Resources.Error_Query_Count_Out_Of_Range);
             }
 
-            var contentSearchUrl = $"{Configuration.ShopApiConfiguration.Url}{BASE_PATH}?q={query}&locale={locale}&refine={refine}&sort={sort}&start={start}&count={count}";
+            var contentSearchUrl = $"{Configuration.ShopApiConfiguration.Url}{BasePath}?q={query}&locale={locale}&refine={refine}&sort={sort}&start={start}&count={count}";
 
             var headers = GetWebHeaders(contentSearchUrl);
 
@@ -73,6 +64,15 @@ namespace Net.Demandware.Ocapi.Resources.Shop
 
             return contentSearchResponse;
         }
+
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// Gets the base resource path.
+        /// </summary>
+        public override string BasePath { get; } = "content_search/";
 
         #endregion
     }

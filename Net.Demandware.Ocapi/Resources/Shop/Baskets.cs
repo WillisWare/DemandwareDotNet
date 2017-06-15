@@ -2,6 +2,7 @@
 using Net.Demandware.Ocapi.Documents.Common;
 using Net.Demandware.Ocapi.Documents.Shop;
 using Net.Demandware.Ocapi.Exceptions;
+using Net.Demandware.Ocapi.Extensions;
 using Net.Demandware.Ocapi.Resources.Base;
 
 namespace Net.Demandware.Ocapi.Resources.Shop
@@ -14,15 +15,6 @@ namespace Net.Demandware.Ocapi.Resources.Shop
     /// </remarks>
     public sealed class Baskets : BaseResource
     {
-        #region Members
-
-        /// <summary>
-        /// Defines the base path of the baskets API for URL-building.
-        /// </summary>
-        private const string BASE_PATH = "baskets/";
-
-        #endregion
-
         #region Methods
 
         /// <summary>
@@ -40,11 +32,11 @@ namespace Net.Demandware.Ocapi.Resources.Shop
                 throw new ArgumentNullException(nameof(basketId), Properties.Resources.Error_Missing_Basket_ID);
             }
 
-            var couponUrl = $"{Configuration.ShopApiConfiguration.Url}{BASE_PATH}{basketId}/coupons";
+            var couponUrl = $"{Configuration.ShopApiConfiguration.Url}{BasePath}{basketId}/coupons";
 
             var headers = GetWebHeaders(couponUrl, GetOcapiJwtToken());
 
-            var couponResponse = ServiceManager.HttpPost<Basket>(couponUrl, headers, GetBytes(couponItem));
+            var couponResponse = ServiceManager.HttpPost<Basket>(couponUrl, headers, couponItem.GetBytes());
 
             return couponResponse;
         }
@@ -59,6 +51,11 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         public Basket AddGiftCertificateItem(string basketId, GiftCertificateItem giftCertificateItem)
         {
+            if (string.IsNullOrEmpty(basketId))
+            {
+                throw new ArgumentException(nameof(basketId), Properties.Resources.Error_Missing_Basket_ID);
+            }
+
             throw new NotImplementedException();
         }
 
@@ -72,6 +69,11 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         public Basket AddNote(string basketId, Note note)
         {
+            if (string.IsNullOrEmpty(basketId))
+            {
+                throw new ArgumentException(nameof(basketId), Properties.Resources.Error_Missing_Basket_ID);
+            }
+
             throw new NotImplementedException();
         }
 
@@ -86,6 +88,11 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <remarks>Payment instruments are usually authorized after order creation, for example in a custom hook. The default payment authorization process executes an authorization when a payment instrument is added to an order or updated. See POST /orders/{order_no}/payment_instruments and PATCH /orders/{order_no}/payment_instruments/{payment_instrument_id}</remarks>
         public Basket AddPaymentInstrument(string basketId, BasketPaymentInstrumentRequest paymentInstrument)
         {
+            if (string.IsNullOrEmpty(basketId))
+            {
+                throw new ArgumentException(nameof(basketId), Properties.Resources.Error_Missing_Basket_ID);
+            }
+
             throw new NotImplementedException();
         }
 
@@ -99,6 +106,11 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         public Basket AddPriceAdjustment(string basketId, PriceAdjustmentRequest priceAdjustment)
         {
+            if (string.IsNullOrEmpty(basketId))
+            {
+                throw new ArgumentException(nameof(basketId), Properties.Resources.Error_Missing_Basket_ID);
+            }
+
             throw new NotImplementedException();
         }
 
@@ -130,6 +142,11 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// </remarks>
         public Basket AddProductItem(string basketId, ProductItem productItem)
         {
+            if (string.IsNullOrEmpty(basketId))
+            {
+                throw new ArgumentException(nameof(basketId), Properties.Resources.Error_Missing_Basket_ID);
+            }
+
             throw new NotImplementedException();
         }
 
@@ -199,6 +216,11 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// </remarks>
         public Basket CreateShipment(string basketId, Shipment shipment)
         {
+            if (string.IsNullOrEmpty(basketId))
+            {
+                throw new ArgumentException(nameof(basketId), Properties.Resources.Error_Missing_Basket_ID);
+            }
+
             throw new NotImplementedException();
         }
 
@@ -211,6 +233,11 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         public Basket GetBasket(string basketId)
         {
+            if (string.IsNullOrEmpty(basketId))
+            {
+                throw new ArgumentException(nameof(basketId), Properties.Resources.Error_Missing_Basket_ID);
+            }
+
             throw new NotImplementedException();
         }
 
@@ -223,6 +250,11 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         public NotesResult GetNotes(string basketId)
         {
+            if (string.IsNullOrEmpty(basketId))
+            {
+                throw new ArgumentException(nameof(basketId), Properties.Resources.Error_Missing_Basket_ID);
+            }
+
             throw new NotImplementedException();
         }
 
@@ -235,6 +267,11 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         public PaymentMethodResult GetPaymentMethods(string basketId)
         {
+            if (string.IsNullOrEmpty(basketId))
+            {
+                throw new ArgumentException(nameof(basketId), Properties.Resources.Error_Missing_Basket_ID);
+            }
+
             throw new NotImplementedException();
         }
 
@@ -249,6 +286,11 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         public ShippingMethodResult GetShippingMethods(string basketId, string shipmentId)
         {
+            if (string.IsNullOrEmpty(basketId))
+            {
+                throw new ArgumentException(nameof(basketId), Properties.Resources.Error_Missing_Basket_ID);
+            }
+
             throw new NotImplementedException();
         }
 
@@ -260,6 +302,11 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         public void RemoveBasket(string basketId)
         {
+            if (string.IsNullOrEmpty(basketId))
+            {
+                throw new ArgumentException(nameof(basketId), Properties.Resources.Error_Missing_Basket_ID);
+            }
+
             throw new NotImplementedException();
         }
 
@@ -274,6 +321,11 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         public Basket RemoveCoupon(string basketId, string couponItemId)
         {
+            if (string.IsNullOrEmpty(basketId))
+            {
+                throw new ArgumentException(nameof(basketId), Properties.Resources.Error_Missing_Basket_ID);
+            }
+
             throw new NotImplementedException();
         }
 
@@ -288,6 +340,11 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         public Basket RemoveNote(string basketId, string noteId)
         {
+            if (string.IsNullOrEmpty(basketId))
+            {
+                throw new ArgumentException(nameof(basketId), Properties.Resources.Error_Missing_Basket_ID);
+            }
+
             throw new NotImplementedException();
         }
 
@@ -302,6 +359,11 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         public Basket RemovePaymentInstrument(string basketId, string paymentInstrumentId)
         {
+            if (string.IsNullOrEmpty(basketId))
+            {
+                throw new ArgumentException(nameof(basketId), Properties.Resources.Error_Missing_Basket_ID);
+            }
+
             throw new NotImplementedException();
         }
 
@@ -316,6 +378,11 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         public Basket RemovePriceAdjustment(string basketId, string priceAdjustmentId)
         {
+            if (string.IsNullOrEmpty(basketId))
+            {
+                throw new ArgumentException(nameof(basketId), Properties.Resources.Error_Missing_Basket_ID);
+            }
+
             throw new NotImplementedException();
         }
 
@@ -330,6 +397,11 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         public Basket RemoveProductItem(string basketId, string itemId)
         {
+            if (string.IsNullOrEmpty(basketId))
+            {
+                throw new ArgumentException(nameof(basketId), Properties.Resources.Error_Missing_Basket_ID);
+            }
+
             throw new NotImplementedException();
         }
 
@@ -357,6 +429,11 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         public Basket UpdateBillingAddress(string basketId, OrderAddress orderAddress, bool useAsDefault)
         {
+            if (string.IsNullOrEmpty(basketId))
+            {
+                throw new ArgumentException(nameof(basketId), Properties.Resources.Error_Missing_Basket_ID);
+            }
+
             throw new NotImplementedException();
         }
 
@@ -370,6 +447,11 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         public Basket UpdateCustomerInfo(string basketId, CustomerInfo customerInfo)
         {
+            if (string.IsNullOrEmpty(basketId))
+            {
+                throw new ArgumentException(nameof(basketId), Properties.Resources.Error_Missing_Basket_ID);
+            }
+
             throw new NotImplementedException();
         }
 
@@ -386,6 +468,11 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <remarks>Payment instruments are usually authorized after order creation, for example in a custom hook. The default payment authorization process executes an authorization when a payment instrument is added to an order or updated. See POST /orders/{order_no}/payment_instruments and PATCH /orders/{order_no}/payment_instruments/{payment_instrument_id}</remarks>
         public Basket UpdatePaymentInstrument(string basketId, string paymentInstrumentId, BasketPaymentInstrumentRequest paymentInstrument)
         {
+            if (string.IsNullOrEmpty(basketId))
+            {
+                throw new ArgumentException(nameof(basketId), Properties.Resources.Error_Missing_Basket_ID);
+            }
+
             throw new NotImplementedException();
         }
 
@@ -417,6 +504,11 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// </remarks>
         public Basket UpdateProductItem(string basketId, string itemId, ProductItem productItem)
         {
+            if (string.IsNullOrEmpty(basketId))
+            {
+                throw new ArgumentException(nameof(basketId), Properties.Resources.Error_Missing_Basket_ID);
+            }
+
             throw new NotImplementedException();
         }
 
@@ -445,6 +537,11 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// </remarks>
         public Basket UpdateShipment(string basketId, string shipmentId, Shipment shipment)
         {
+            if (string.IsNullOrEmpty(basketId))
+            {
+                throw new ArgumentException(nameof(basketId), Properties.Resources.Error_Missing_Basket_ID);
+            }
+
             throw new NotImplementedException();
         }
 
@@ -461,6 +558,11 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         public Basket UpdateShippingAddress(string basketId, string shipmentId, OrderAddress orderAddress, bool useAsBilling)
         {
+            if (string.IsNullOrEmpty(basketId))
+            {
+                throw new ArgumentException(nameof(basketId), Properties.Resources.Error_Missing_Basket_ID);
+            }
+
             throw new NotImplementedException();
         }
 
@@ -476,8 +578,22 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// <exception cref="ApiException">Thrown when a <see cref="Fault"/> document is returned.</exception>
         public Basket UpdateShippingMethod(string basketId, string shipmentId, ShippingMethod shippingMethod)
         {
+            if (string.IsNullOrEmpty(basketId))
+            {
+                throw new ArgumentException(nameof(basketId), Properties.Resources.Error_Missing_Basket_ID);
+            }
+
             throw new NotImplementedException();
         }
+
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// Gets the base resource path.
+        /// </summary>
+        public override string BasePath { get; } = "baskets/";
 
         #endregion
     }

@@ -1,6 +1,16 @@
-﻿namespace Net.Demandware.Ocapi.Resources.Data
+﻿using Net.Demandware.Ocapi.Resources.Base;
+
+namespace Net.Demandware.Ocapi.Resources.Data
 {
-    class Libraries
+    public sealed class Libraries : BaseResource
     {
+        #region Properties
+
+        /// <summary>
+        /// Gets the base resource path.
+        /// </summary>
+        public override string BasePath { get; } = "libraries/";
+
+        #endregion
     }
 }

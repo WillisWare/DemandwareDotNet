@@ -1,6 +1,16 @@
-﻿namespace Net.Demandware.Ocapi.Resources.Data
+﻿using Net.Demandware.Ocapi.Resources.Base;
+
+namespace Net.Demandware.Ocapi.Resources.Data
 {
-    class SlotConfigurations
+    public sealed class SlotConfigurations : BaseResource
     {
+        #region Properties
+
+        /// <summary>
+        /// Gets the base resource path.
+        /// </summary>
+        public override string BasePath { get; } = "sites/{site_id}/slots/{slot_id}/slot_configurations/";
+
+        #endregion
     }
 }

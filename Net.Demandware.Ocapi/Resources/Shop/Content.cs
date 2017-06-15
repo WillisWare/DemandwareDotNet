@@ -11,15 +11,6 @@ namespace Net.Demandware.Ocapi.Resources.Shop
     /// <remarks>Does not have to authenticate the customer.</remarks>
     public sealed class Content : BaseResource
     {
-        #region Members
-
-        /// <summary>
-        /// Defines the base path of the content API for URL-building.
-        /// </summary>
-        private const string BASE_PATH = "content/";
-
-        #endregion
-
         #region Methods
 
         /// <summary>
@@ -37,7 +28,7 @@ namespace Net.Demandware.Ocapi.Resources.Shop
                 throw new ArgumentNullException(nameof(contentIds), Properties.Resources.Error_Missing_Content_ID);
             }
 
-            var contentUrl = $"{Configuration.ShopApiConfiguration.Url}{BASE_PATH}({contentIds.Aggregate((source, next) => source + "," + next)})?locale={locale}";
+            var contentUrl = $"{Configuration.ShopApiConfiguration.Url}{BasePath}({contentIds.Aggregate((source, next) => source + "," + next)})?locale={locale}";
 
             var headers = GetWebHeaders(contentUrl);
 
@@ -61,7 +52,7 @@ namespace Net.Demandware.Ocapi.Resources.Shop
                 throw new ArgumentNullException(nameof(contentId), Properties.Resources.Error_Missing_Content_ID);
             }
 
-            var contentUrl = $"{Configuration.ShopApiConfiguration.Url}{BASE_PATH}{contentId}?locale={locale}";
+            var contentUrl = $"{Configuration.ShopApiConfiguration.Url}{BasePath}{contentId}?locale={locale}";
 
             var headers = GetWebHeaders(contentUrl);
 
@@ -69,6 +60,15 @@ namespace Net.Demandware.Ocapi.Resources.Shop
 
             return contentResponse;
         }
+
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// Gets the base resource path.
+        /// </summary>
+        public override string BasePath { get; } = "content/";
 
         #endregion
     }

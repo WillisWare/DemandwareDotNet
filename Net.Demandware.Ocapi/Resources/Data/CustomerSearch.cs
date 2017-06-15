@@ -1,6 +1,7 @@
 ﻿using Net.Demandware.Ocapi.Documents.Common;
 using Net.Demandware.Ocapi.Documents.Data;
 using Net.Demandware.Ocapi.Exceptions;
+using Net.Demandware.Ocapi.Extensions;
 using Net.Demandware.Ocapi.Resources.Base;
 
 namespace Net.Demandware.Ocapi.Resources.Data
@@ -10,15 +11,6 @@ namespace Net.Demandware.Ocapi.Resources.Data
     /// </summary>
     public sealed class CustomerSearch : BaseResource
     {
-        #region Members
-
-        /// <summary>
-        /// Defines the base path of the customers API for URL-building.
-        /// </summary>
-        private const string BASE_PATH = "customer_search";
-
-        #endregion
-
         #region Methods
 
         /// <summary>
@@ -36,14 +28,23 @@ namespace Net.Demandware.Ocapi.Resources.Data
         {
             var authorization = GetOcapiAuthorizationToken();
 
-            var searchUrl = $"{Configuration.DataApiConfiguration.Url}{BASE_PATH}";
+            var searchUrl = $"{Configuration.DataApiConfiguration.Url}{BasePath}";
 
             var headers = GetWebHeaders(searchUrl, authorization);
 
-            var searchResponse = ServiceManager.HttpPost<CustomerSearchResult>(searchUrl, headers, GetBytes(request));
+            var searchResponse = ServiceManager.HttpPost<CustomerSearchResult>(searchUrl, headers, request.GetBytes());
 
             return searchResponse;
         }
+
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// Gets the base resource path.
+        /// </summary>
+        public override string BasePath { get; } = "customer_search/";
 
         #endregion
     }

@@ -16,15 +16,6 @@ namespace Net.Demandware.Ocapi.Resources.Shop
     /// <remarks>Uses JWT or an OAuth Business Manager user grant as authentication method.</remarks>
     public sealed class Customers : BaseResource
     {
-        #region Members
-
-        /// <summary>
-        /// Defines the base path of the customers API for URL-building.
-        /// </summary>
-        private const string BASE_PATH = "customers/";
-
-        #endregion
-
         #region Methods
 
         /// <summary>
@@ -47,7 +38,7 @@ namespace Net.Demandware.Ocapi.Resources.Shop
                 throw new ArgumentNullException(nameof(customerId), Properties.Resources.Error_Missing_Customer_ID);
             }
 
-            var tokenUrl = $"{Configuration.ShopApiConfiguration.Url}{BASE_PATH}{customerId}/auth?client_id={Configuration.Credentials.ClientId}";
+            var tokenUrl = $"{Configuration.ShopApiConfiguration.Url}{BasePath}{customerId}/auth?client_id={Configuration.Credentials.ClientId}";
 
             var headers = GetWebHeaders(tokenUrl, Configuration.Credentials.ClientId);
 
@@ -152,11 +143,11 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         {
             var requestBody = $"{{\"type\":\"{requestType.GetEnumMemberValue()}\"}}";
 
-            var customerAuthUrl = $"{Configuration.ShopApiConfiguration.Url}{BASE_PATH}auth?client_id={Configuration.Credentials.ClientId}";
+            var customerAuthUrl = $"{Configuration.ShopApiConfiguration.Url}{BasePath}auth?client_id={Configuration.Credentials.ClientId}";
 
             var headers = GetWebHeaders(customerAuthUrl);
 
-            ServiceManager.HttpPost<JwtToken>(customerAuthUrl, headers, GetBytes(requestBody));
+            ServiceManager.HttpPost<JwtToken>(customerAuthUrl, headers, requestBody.GetBytes());
 
             var authorization = headers[HttpRequestHeader.Authorization];
             if (string.IsNullOrEmpty(authorization))
@@ -208,7 +199,7 @@ namespace Net.Demandware.Ocapi.Resources.Shop
                 throw new ArgumentNullException(nameof(customerId), Properties.Resources.Error_Missing_Customer_ID);
             }
 
-            var customerUrl = $"{Configuration.ShopApiConfiguration.Url}{BASE_PATH}{HttpUtility.UrlEncode(customerId)}";
+            var customerUrl = $"{Configuration.ShopApiConfiguration.Url}{BasePath}{HttpUtility.UrlEncode(customerId)}";
 
             var headers = GetWebHeaders(customerUrl, GetOcapiJwtToken());
 
@@ -351,11 +342,11 @@ namespace Net.Demandware.Ocapi.Resources.Shop
         /// </remarks>
         public void ResetPassword(PasswordResetRequest passwordResetRequest)
         {
-            var passwordResetUrl = $"{Configuration.ShopApiConfiguration.Url}{BASE_PATH}password_reset";
+            var passwordResetUrl = $"{Configuration.ShopApiConfiguration.Url}{BasePath}password_reset";
 
             var headers = GetWebHeaders(passwordResetUrl, Configuration.Credentials.ClientId);
 
-            var response = ServiceManager.HttpPost<Fault>(passwordResetUrl, headers, GetBytes(passwordResetRequest));
+            var response = ServiceManager.HttpPost<Fault>(passwordResetUrl, headers, passwordResetRequest.GetBytes());
             if (response != null)
             {
                 throw new ApiException(response);
@@ -419,6 +410,15 @@ namespace Net.Demandware.Ocapi.Resources.Shop
 
             throw new NotImplementedException();
         }
+
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// Gets the base resource path.
+        /// </summary>
+        public override string BasePath { get; } = "customers/";
 
         #endregion
     }

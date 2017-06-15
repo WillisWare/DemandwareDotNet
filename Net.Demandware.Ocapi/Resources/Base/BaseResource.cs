@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Configuration;
 using System.Net;
-using System.Text;
 using Net.Demandware.Ocapi.Configuration;
 using Net.Demandware.Ocapi.Documents.Common;
 using Net.Demandware.Ocapi.Extensions;
 using Net.Demandware.Ocapi.Resources.Common;
-using Newtonsoft.Json;
 
 namespace Net.Demandware.Ocapi.Resources.Base
 {
@@ -43,18 +41,6 @@ namespace Net.Demandware.Ocapi.Resources.Base
         #region Methods
 
         /// <summary>
-        /// Converts an object to a JSON-serialized byte array for use as a request payload.
-        /// </summary>
-        /// <param name="value">An Object to be serialized.</param>
-        /// <returns>The serialized object.</returns>
-        protected byte[] GetBytes(object value)
-        {
-            var serializedValue = JsonConvert.SerializeObject(value);
-
-            return Encoding.Default.GetBytes(serializedValue);
-        }
-
-        /// <summary>
         /// Gets the host name from the specified URL.
         /// </summary>
         /// <param name="url">A String value containing the URL.</param>
@@ -75,7 +61,6 @@ namespace Net.Demandware.Ocapi.Resources.Base
         protected string GetOcapiAuthorizationToken()
         {
             var authorization = $"{Configuration.Credentials.ClientId}:{Configuration.Credentials.Password}".EncodeTo64();
-            var data = Encoding.Default.GetBytes(Constants.OCAPI_DATA);
 
             var headers = new WebHeaderCollection
             {
@@ -84,7 +69,7 @@ namespace Net.Demandware.Ocapi.Resources.Base
                 [HttpRequestHeader.Host] = GetHostHeader(Configuration.Credentials.OAuthPath.Url)
             };
 
-            var response = ServiceManager.HttpPost<dynamic>(Configuration.Credentials.OAuthPath.Url, headers, data);
+            var response = ServiceManager.HttpPost<dynamic>(Configuration.Credentials.OAuthPath.Url, headers, Constants.OCAPI_DATA.GetBytes());
 
             return (string)response.access_token;
         }
@@ -95,10 +80,6 @@ namespace Net.Demandware.Ocapi.Resources.Base
         /// <returns>A String value containing the JWT token.</returns>
         protected string GetOcapiJwtToken()
         {
-            const string JSON_REQUEST_BODY = "{\"type\":\"guest\"}";
-
-            var data = Encoding.Default.GetBytes(JSON_REQUEST_BODY);
-
             var headers = new WebHeaderCollection
             {
                 [HttpRequestHeader.ContentType] = Constants.CONTENT_TYPE_JSON,
@@ -106,7 +87,7 @@ namespace Net.Demandware.Ocapi.Resources.Base
                 [Constants.OCAPI_CLIENT_HEADER] = Configuration.Credentials.ClientId
             };
 
-            ServiceManager.HttpPost<JwtToken>($"{Configuration.ShopApiConfiguration.Url}customers/auth", headers, data);
+            ServiceManager.HttpPost<JwtToken>($"{Configuration.ShopApiConfiguration.Url}customers/auth", headers, Constants.JWT_DATA.GetBytes());
 
             var authorization = headers[HttpRequestHeader.Authorization];
             if (string.IsNullOrEmpty(authorization))
@@ -157,6 +138,11 @@ namespace Net.Demandware.Ocapi.Resources.Base
         #endregion
 
         #region Properties
+
+        /// <summary>
+        /// Must override in inherited classes. Gets the base resource path.
+        /// </summary>
+        public abstract string BasePath { get; }
 
         /// <summary>
         /// Gets the configuration instance containing connection information for the OCAPI service.

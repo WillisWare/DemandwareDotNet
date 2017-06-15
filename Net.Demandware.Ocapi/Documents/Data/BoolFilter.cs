@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace Net.Demandware.Ocapi.Documents.Data
 {
@@ -104,6 +105,7 @@ namespace Net.Demandware.Ocapi.Documents.Data
         /// <summary>
         /// The logical operator the filters are combined with.
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         [JsonProperty(PropertyName = "operator", Required = Required.DisallowNull)]
         public BoolFilterOperator Operator { get; set; }
 

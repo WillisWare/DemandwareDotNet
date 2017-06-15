@@ -13,15 +13,6 @@ namespace Net.Demandware.Ocapi.Resources.Shop
     /// <remarks>Does not have to authenticate the customer.</remarks>
     public sealed class Folders : BaseResource
     {
-        #region Members
-
-        /// <summary>
-        /// Defines the base path of the folders API for URL-building.
-        /// </summary>
-        private const string BASE_PATH = "folders/";
-
-        #endregion
-
         #region Methods
 
         /// <summary>
@@ -51,7 +42,7 @@ namespace Net.Demandware.Ocapi.Resources.Shop
                 throw new ArgumentOutOfRangeException(nameof(folderIds), Properties.Resources.Error_Folder_ID_Out_Of_Range);
             }
 
-            var foldersUrl = $"{Configuration.ShopApiConfiguration.Url}{BASE_PATH}({folderIds.Aggregate((source, next) => source + "," + next)})?levels={levels}&locale={locale}";
+            var foldersUrl = $"{Configuration.ShopApiConfiguration.Url}{BasePath}({folderIds.Aggregate((source, next) => source + "," + next)})?levels={levels}&locale={locale}";
 
             var headers = GetWebHeaders(foldersUrl);
 
@@ -81,7 +72,7 @@ namespace Net.Demandware.Ocapi.Resources.Shop
                 throw new ArgumentNullException(nameof(folderId), Properties.Resources.Error_Missing_Folder_ID);
             }
 
-            var folderUrl = $"{Configuration.ShopApiConfiguration.Url}{BASE_PATH}{folderId}?levels={levels}&locale={locale}";
+            var folderUrl = $"{Configuration.ShopApiConfiguration.Url}{BasePath}{folderId}?levels={levels}&locale={locale}";
 
             var headers = GetWebHeaders(folderUrl);
 
@@ -89,6 +80,15 @@ namespace Net.Demandware.Ocapi.Resources.Shop
 
             return folderResponse;
         }
+
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// Gets the base resource path.
+        /// </summary>
+        public override string BasePath { get; } = "folders/";
 
         #endregion
     }

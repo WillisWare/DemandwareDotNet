@@ -18,12 +18,12 @@ namespace Net.Demandware.Ocapi.Util
 
         private static int PromptUser()
         {
-            Console.WriteLine("You may select from the following options:");
+            Console.WriteLine(Properties.Resources.Prompt_Menu_Select_Option);
             Console.WriteLine();
-            Console.WriteLine("1: Get Customer Details");
-            Console.WriteLine("0: Quit");
+            Console.WriteLine($"1: {Properties.Resources.Prompt_Menu_Get_Customer_Details}");
+            Console.WriteLine($"0: {Properties.Resources.Prompt_Menu_Quit}");
             Console.WriteLine();
-            Console.Write("Enter Selection: ");
+            Console.Write($"{Properties.Resources.Prompt_Menu_Enter_Selection}: ");
 
             int input;
             return (!int.TryParse(Console.ReadLine(), out input) ? 0 : input);

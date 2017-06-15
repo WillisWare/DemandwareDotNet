@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Net.Demandware.Ocapi.DataTypes;
 using Net.Demandware.Ocapi.Documents.Base;
 using Newtonsoft.Json;
 
@@ -15,7 +16,7 @@ namespace Net.Demandware.Ocapi.Documents.Shop
         /// The localized display name of the variation attribute.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
+        public Localized<string> Name { get; set; }
 
         /// <summary>
         /// The sorted array of variation values. This array can be empty.

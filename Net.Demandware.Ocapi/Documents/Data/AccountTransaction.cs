@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace Net.Demandware.Ocapi.Documents.Data
 {
@@ -68,6 +69,7 @@ namespace Net.Demandware.Ocapi.Documents.Data
         /// <summary>
         /// The type code of the gift certificate.
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         [JsonProperty(PropertyName = "type_code")]
         public AccountTransactionType Type { get; set; }
 

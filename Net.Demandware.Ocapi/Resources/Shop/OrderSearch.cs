@@ -1,6 +1,16 @@
-﻿namespace Net.Demandware.Ocapi.Resources.Shop
+﻿using Net.Demandware.Ocapi.Resources.Base;
+
+namespace Net.Demandware.Ocapi.Resources.Shop
 {
-    class OrderSearch
+    public sealed class OrderSearch : BaseResource
     {
+        #region Properties
+
+        /// <summary>
+        /// Gets the base resource path.
+        /// </summary>
+        public override string BasePath { get; } = "order_search/";
+
+        #endregion
     }
 }

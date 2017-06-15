@@ -10,15 +10,6 @@ namespace Net.Demandware.Ocapi.Resources.Shop
     /// </summary>
     public sealed class CustomObjects : BaseResource
     {
-        #region Members
-
-        /// <summary>
-        /// Defines the base path of the baskets API for URL-building.
-        /// </summary>
-        private const string BASE_PATH = "custom_objects/";
-
-        #endregion
-
         #region Methods
 
         /// <summary>
@@ -41,7 +32,7 @@ namespace Net.Demandware.Ocapi.Resources.Shop
                 throw new ArgumentNullException(nameof(objectType), Properties.Resources.Error_Missing_Custom_Object_Type);
             }
 
-            var customObjectUrl = $"{Configuration.ShopApiConfiguration.Url}{BASE_PATH}{objectType}/{key}";
+            var customObjectUrl = $"{Configuration.ShopApiConfiguration.Url}{BasePath}{objectType}/{key}";
 
             var headers = GetWebHeaders(customObjectUrl);
 
@@ -49,6 +40,15 @@ namespace Net.Demandware.Ocapi.Resources.Shop
 
             return customObjectResponse;
         }
+
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// Gets the base resource path.
+        /// </summary>
+        public override string BasePath { get; } = "custom_objects/";
 
         #endregion
     }

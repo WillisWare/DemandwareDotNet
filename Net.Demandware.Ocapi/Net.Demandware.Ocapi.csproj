@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Net.Demandware.Ocapi</RootNamespace>
     <AssemblyName>Net.Demandware.Ocapi</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,8 +36,8 @@
     <ApplicationIcon>..\Resources\demandware.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -52,17 +53,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="Configuration\OcapiConfigurationSection.cs" />
     <Compile Include="Configuration\OcapiNetworkPathElement.cs" />
     <Compile Include="Configuration\OcapiSecurityElement.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="DataTypes\Localized.cs" />
+    <Compile Include="DataTypes\SiteSpecific.cs" />
     <Compile Include="Documents\Base\BaseAddress.cs" />
     <Compile Include="Documents\Base\BaseClass.cs" />
     <Compile Include="Documents\Base\BaseCustomer.cs" />
     <Compile Include="Documents\Base\BaseGiftCertificate.cs" />
     <Compile Include="Documents\Base\BaseItem.cs" />
     <Compile Include="Documents\Base\BaseOrder.cs" />
+    <Compile Include="Documents\Base\BasePagedList.cs" />
     <Compile Include="Documents\Base\BasePageItem.cs" />
+    <Compile Include="Documents\Base\BaseProductType.cs" />
+    <Compile Include="Documents\Base\BaseSearchResult.cs" />
     <Compile Include="Documents\Base\BaseStore.cs" />
     <Compile Include="Documents\Base\BaseSuggestedItem.cs" />
     <Compile Include="Documents\Base\BasePaymentCardRequest.cs" />
@@ -73,30 +82,88 @@
     <Compile Include="Documents\Base\BaseResult.cs" />
     <Compile Include="Documents\Common\CustomObject.cs" />
     <Compile Include="Documents\Common\JwtToken.cs" />
+    <Compile Include="Documents\Data\AbTest.cs" />
+    <Compile Include="Documents\Data\AbTestGroup.cs" />
+    <Compile Include="Documents\Data\AbTests.cs" />
+    <Compile Include="Documents\Data\AbTestTrigger.cs" />
+    <Compile Include="Documents\Data\CampaignPromotionExperience.cs" />
+    <Compile Include="Documents\Data\Campaigns.cs" />
+    <Compile Include="Documents\Data\CampaignSlotConfigurationExperience.cs" />
+    <Compile Include="Documents\Data\CampaignSortingRuleExperience.cs" />
+    <Compile Include="Documents\Data\Catalog.cs" />
+    <Compile Include="Documents\Data\Catalogs.cs" />
+    <Compile Include="Documents\Data\CatalogSearchResult.cs" />
+    <Compile Include="Documents\Data\Categories.cs" />
+    <Compile Include="Documents\Data\Category.cs" />
+    <Compile Include="Documents\Data\CategoryLink.cs" />
+    <Compile Include="Documents\Data\CategoryLinks.cs" />
+    <Compile Include="Documents\Data\MarkupText.cs" />
+    <Compile Include="Documents\Data\Master.cs" />
+    <Compile Include="Documents\Data\MediaFile.cs" />
+    <Compile Include="Documents\Data\ProductType.cs" />
+    <Compile Include="Documents\Data\Variant.cs" />
+    <Compile Include="Documents\Base\BaseVariationGroup.cs" />
     <Compile Include="Exceptions\ApiException.cs" />
     <Compile Include="Exceptions\DemandwareException.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
+    <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Resources\Base\BaseResource.cs" />
+    <Compile Include="Resources\Data\AbTests.cs" />
+    <Compile Include="Resources\Data\AbTestSearch.cs" />
     <Compile Include="Resources\Data\Campaigns.cs" />
     <Compile Include="Resources\Data\CampaignSearch.cs" />
+    <Compile Include="Resources\Data\Catalogs.cs" />
+    <Compile Include="Resources\Data\CatalogSearch.cs" />
+    <Compile Include="Resources\Data\Categories.cs" />
+    <Compile Include="Resources\Data\CategoryLinks.cs" />
+    <Compile Include="Resources\Data\CategoryProductAssignmentSearch.cs" />
+    <Compile Include="Resources\Data\CategorySearch.cs" />
+    <Compile Include="Resources\Data\CodeVersions.cs" />
+    <Compile Include="Resources\Data\CouponRedemptionSearch.cs" />
     <Compile Include="Resources\Data\Coupons.cs" />
     <Compile Include="Resources\Data\CouponSearch.cs" />
+    <Compile Include="Resources\Data\CustomerGroups.cs" />
+    <Compile Include="Resources\Data\CustomerGroupSearch.cs" />
     <Compile Include="Resources\Data\CustomerLists.cs" />
     <Compile Include="Resources\Data\CustomerSearch.cs" />
+    <Compile Include="Resources\Data\CustomObjectDefinitions.cs" />
     <Compile Include="Resources\Data\CustomObjects.cs" />
     <Compile Include="Resources\Data\CustomObjectsSearch.cs" />
     <Compile Include="Resources\Data\GiftCertificates.cs" />
     <Compile Include="Resources\Data\GiftCertificateSearch.cs" />
+    <Compile Include="Resources\Data\GlobalPreferences.cs" />
     <Compile Include="Resources\Data\InventoryLists.cs" />
     <Compile Include="Resources\Data\InventoryListSearch.cs" />
+    <Compile Include="Resources\Data\JobExecutionSearch.cs" />
+    <Compile Include="Resources\Data\Jobs.cs" />
     <Compile Include="Resources\Data\Libraries.cs" />
+    <Compile Include="Resources\Data\LocaleInfo.cs" />
+    <Compile Include="Resources\Data\ProductInventoryRecords.cs" />
+    <Compile Include="Resources\Data\Products.cs" />
+    <Compile Include="Resources\Data\ProductSearch.cs" />
+    <Compile Include="Resources\Data\PromotionCampaignAssignmentSearch.cs" />
+    <Compile Include="Resources\Data\Promotions.cs" />
+    <Compile Include="Resources\Data\PromotionSearch.cs" />
+    <Compile Include="Resources\Data\Roles.cs" />
+    <Compile Include="Resources\Data\RoleSearch.cs" />
+    <Compile Include="Resources\Data\Settings.cs" />
+    <Compile Include="Resources\Data\SitePreferences.cs" />
     <Compile Include="Resources\Data\Sites.cs" />
+    <Compile Include="Resources\Data\SiteSearch.cs" />
+    <Compile Include="Resources\Data\SlotConfigurationCampaignAssignmentSearch.cs" />
     <Compile Include="Resources\Data\SlotConfigurations.cs" />
     <Compile Include="Resources\Data\SlotConfigurationSearch.cs" />
+    <Compile Include="Resources\Data\Slots.cs" />
+    <Compile Include="Resources\Data\SlotSearch.cs" />
+    <Compile Include="Resources\Data\SourceCodeGroups.cs" />
+    <Compile Include="Resources\Data\SourceCodeGroupSearch.cs" />
     <Compile Include="Resources\Data\Stores.cs" />
     <Compile Include="Resources\Data\StoreSearch.cs" />
     <Compile Include="Resources\Common\ServiceManager.cs" />
+    <Compile Include="Resources\Data\SystemObjectDefinitions.cs" />
+    <Compile Include="Resources\Data\SystemObjectDefinitionSearch.cs" />
+    <Compile Include="Resources\Data\VariantSearch.cs" />
     <Compile Include="Resources\Shop\Baskets.cs" />
     <Compile Include="Documents\Data\CampaignSearchResult.cs" />
     <Compile Include="Documents\Data\ContentAssetResult.cs" />
@@ -164,6 +231,7 @@
     <Compile Include="Resources\Shop\GiftCertificate.cs" />
     <Compile Include="Resources\Shop\OrderSearch.cs" />
     <Compile Include="Resources\Shop\Orders.cs" />
+    <Compile Include="Resources\Shop\PriceAdjustmentLimits.cs" />
     <Compile Include="Resources\Shop\ProductLists.cs" />
     <Compile Include="Resources\Shop\ProductSearch.cs" />
     <Compile Include="Resources\Shop\Products.cs" />
@@ -254,7 +322,6 @@
     <Compile Include="Documents\Shop\Variant.cs" />
     <Compile Include="Documents\Shop\VariationAttribute.cs" />
     <Compile Include="Documents\Shop\VariationAttributeValue.cs" />
-    <Compile Include="Documents\Shop\VariationGroup.cs" />
     <Compile Include="Documents\Shop\NotesResult.cs" />
     <Compile Include="Documents\Shop\OrderPaymentCardRequest.cs" />
     <Compile Include="Documents\Shop\OrderPaymentInstrumentRequest.cs" />
@@ -295,7 +362,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

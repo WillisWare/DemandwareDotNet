@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Net.Demandware.Ocapi.DataTypes;
 using Newtonsoft.Json;
 
 namespace Net.Demandware.Ocapi.Documents.Shop
@@ -14,7 +15,7 @@ namespace Net.Demandware.Ocapi.Documents.Shop
         /// The localized description of the variation value.
         /// </summary>
         [JsonProperty(PropertyName = "description")]
-        public string Description { get; set; }
+        public Localized<string> Description { get; set; }
 
         /// <summary>
         /// The first product image for the configured viewtype and this variation value.
@@ -38,7 +39,7 @@ namespace Net.Demandware.Ocapi.Documents.Shop
         /// The localized display name of the variation value.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
+        public Localized<string> Name { get; set; }
 
         /// <summary>
         /// The actual variation value.

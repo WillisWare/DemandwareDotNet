@@ -17,6 +17,8 @@
 
         internal const string DEMANDWARE_ETAG_HEADER = "ETag";
 
+        internal const string JWT_DATA = "{\"type\":\"guest\"}";
+
         internal const string OCAPI_CLIENT_HEADER = "x-dw-client-id";
 
         internal const string OCAPI_DATA = "grant_type=client_credentials";
