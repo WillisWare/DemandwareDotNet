@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Net.Demandware.Ocapi.Documents.Base;
 using Newtonsoft.Json;
 
 namespace Net.Demandware.Ocapi.Documents.Shop
@@ -224,7 +225,7 @@ namespace Net.Demandware.Ocapi.Documents.Shop
         /// </summary>
         /// <remarks>Only for types master, variation group and variant.</remarks>
         [JsonProperty(PropertyName = "variation_groups")]
-        public IEnumerable<VariationGroup> VariationGroups { get; set; }
+        public IEnumerable<BaseVariationGroup> VariationGroups { get; set; }
 
         /// <summary>
         /// The actual variation attribute id - value pairs.
