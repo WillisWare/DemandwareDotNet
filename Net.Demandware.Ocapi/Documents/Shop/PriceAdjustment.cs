@@ -62,6 +62,12 @@ namespace Net.Demandware.Ocapi.Documents.Shop
         public string ItemText { get; set; }
 
         /// <summary>
+        /// Returns the value of attribute 'lastModified'.
+        /// </summary>
+        [JsonProperty(PropertyName = "last_modified")]
+        public DateTime ModifiedDate { get; set; }
+
+        /// <summary>
         /// The adjustment price.
         /// </summary>
         [JsonProperty(PropertyName = "price")]

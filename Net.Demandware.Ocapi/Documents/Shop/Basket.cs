@@ -1,4 +1,5 @@
-﻿using Net.Demandware.Ocapi.Documents.Base;
+﻿using System.Collections.Generic;
+using Net.Demandware.Ocapi.Documents.Base;
 using Newtonsoft.Json;
 
 namespace Net.Demandware.Ocapi.Documents.Shop
@@ -29,6 +30,12 @@ namespace Net.Demandware.Ocapi.Documents.Shop
     public sealed class Basket : BaseOrder
     {
         #region Properties
+
+        /// <summary>
+        /// The bonus discount line items of the line item container.
+        /// </summary>
+        [JsonProperty(PropertyName = "bonus_discount_line_items")]
+        public IEnumerable<BonusDiscountLineItem> BonusDiscountLineItems { get; set; }
 
         /// <summary>
         /// The unique identifier for the basket.

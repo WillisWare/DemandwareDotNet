@@ -24,10 +24,10 @@ namespace Net.Demandware.Ocapi.Documents.Base
         CallCenter,
 
         /// <summary>
-        /// Indicates a marketplace channel.
+        /// Indicates a customer service center channel.
         /// </summary>
-        [EnumMember(Value = "marketplace")]
-        Marketplace,
+        [EnumMember(Value = "customerservicecenter")]
+        CustomerServiceCenter,
 
         /// <summary>
         /// Indicates a DSS channel.
@@ -36,16 +36,40 @@ namespace Net.Demandware.Ocapi.Documents.Base
         Dss,
 
         /// <summary>
-        /// Indicates a store channel.
+        /// Indicates a Facebook Ads channel.
         /// </summary>
-        [EnumMember(Value = "store")]
-        Store,
+        [EnumMember(Value = "facebookads")]
+        FacebookAds,
+
+        /// <summary>
+        /// Indicates a marketplace channel.
+        /// </summary>
+        [EnumMember(Value = "marketplace")]
+        Marketplace,
+
+        /// <summary>
+        /// Indicates an online reservation channel.
+        /// </summary>
+        [EnumMember(Value = "onlinereservation")]
+        OnlineReservation,
 
         /// <summary>
         /// Indicates a Pinterest channel.
         /// </summary>
         [EnumMember(Value = "pinterest")]
         Pinterest,
+
+        /// <summary>
+        /// Indicates a store channel.
+        /// </summary>
+        [EnumMember(Value = "store")]
+        Store,
+
+        /// <summary>
+        /// Indicates a subscriptions channel.
+        /// </summary>
+        [EnumMember(Value = "subscriptions")]
+        Subscriptions,
 
         /// <summary>
         /// Indicates a Twitter channel.
@@ -247,7 +271,7 @@ namespace Net.Demandware.Ocapi.Documents.Base
         /// The sorted array of coupon items. This array can be empty.
         /// </summary>
         [JsonProperty(PropertyName = "coupon_items")]
-        public IEnumerable<CouponItem> CouponItems { get; set; }
+        public IEnumerable<CouponItem> CouponItems { get; set; } = new List<CouponItem>();
 
         /// <summary>
         /// The ISO 4217 mnemonic code of the currency.
@@ -266,13 +290,13 @@ namespace Net.Demandware.Ocapi.Documents.Base
         /// The order's custom attributes.
         /// </summary>
         [JsonExtensionData]
-        public new IDictionary<string, object> CustomAttributes { get; set; }
+        public new IDictionary<string, object> CustomAttributes { get; set; } = new Dictionary<string, object>();
 
         /// <summary>
         /// The sorted array of gift certificate line items. This array can be empty.
         /// </summary>
         [JsonProperty(PropertyName = "gift_certificate_items")]
-        public IEnumerable<GiftCertificateItem> GiftCertificateItems { get; set; }
+        public IEnumerable<GiftCertificateItem> GiftCertificateItems { get; set; } = new List<GiftCertificateItem>();
 
         /// <summary>
         /// The products total tax in purchase currency. Merchandize total prices represent the sum of product prices before services such as shipping or adjustment from promotions have been added.
@@ -297,19 +321,19 @@ namespace Net.Demandware.Ocapi.Documents.Base
         /// The payment instruments list for the order.
         /// </summary>
         [JsonProperty(PropertyName = "payment_instruments")]
-        public IEnumerable<OrderPaymentInstrument> PaymentInstruments { get; set; }
+        public IEnumerable<OrderPaymentInstrument> PaymentInstruments { get; set; } = new List<OrderPaymentInstrument>();
 
         /// <summary>
         /// The array of order level price adjustments. This array can be empty.
         /// </summary>
         [JsonProperty(PropertyName = "order_price_adjustments")]
-        public IEnumerable<PriceAdjustment> PriceAdjustments { get; set; }
+        public IEnumerable<PriceAdjustment> PriceAdjustments { get; set; } = new List<PriceAdjustment>();
 
         /// <summary>
         /// The sorted array of product items (up to a maximum of 50 items). This array can be empty.
         /// </summary>
         [JsonProperty(PropertyName = "product_items")]
-        public IEnumerable<ProductItem> ProductItems { get; set; }
+        public IEnumerable<ProductItem> ProductItems { get; set; } = new List<ProductItem>();
 
         /// <summary>
         /// The total price of all product items after all product discounts. Depending on taxation policy the returned price is net or gross.
@@ -328,13 +352,13 @@ namespace Net.Demandware.Ocapi.Documents.Base
         /// </summary>
         /// <remarks>This property is part of basket checkout information only.</remarks>
         [JsonProperty(PropertyName = "shipments")]
-        public IEnumerable<Shipment> Shipments { get; set; }
+        public IEnumerable<Shipment> Shipments { get; set; } = new List<Shipment>();
 
         /// <summary>
         /// The sorted array of shipping items. This array can be empty.
         /// </summary>
         [JsonProperty(PropertyName = "shipping_items")]
-        public IEnumerable<ShippingItem> ShippingItems { get; set; }
+        public IEnumerable<ShippingItem> ShippingItems { get; set; } = new List<ShippingItem>();
 
         /// <summary>
         /// The tax of all shipping line items of the line item container before shipping adjustments have been applied.

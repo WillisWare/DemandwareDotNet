@@ -103,6 +103,10 @@
     <Compile Include="Documents\Data\ProductType.cs" />
     <Compile Include="Documents\Data\Variant.cs" />
     <Compile Include="Documents\Base\BaseVariationGroup.cs" />
+    <Compile Include="Documents\Shop\ApproachingDiscount.cs" />
+    <Compile Include="Documents\Shop\ApproachingDiscountResult.cs" />
+    <Compile Include="Documents\Shop\BonusDiscountLineItem.cs" />
+    <Compile Include="Documents\Shop\PromotionLink.cs" />
     <Compile Include="Exceptions\ApiException.cs" />
     <Compile Include="Exceptions\DemandwareException.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
@@ -251,7 +255,7 @@
     <Compile Include="Documents\Shop\DiscountRequest.cs" />
     <Compile Include="Documents\Common\Fault.cs" />
     <Compile Include="Documents\Shop\GiftCertificateRequest.cs" />
-    <Compile Include="Documents\Shop\AddressLink.cs" />
+    <Compile Include="Documents\Shop\CustomerAddressLink.cs" />
     <Compile Include="Documents\Shop\AuthRequest.cs" />
     <Compile Include="Documents\Shop\Basket.cs" />
     <Compile Include="Documents\Shop\BundledProduct.cs" />

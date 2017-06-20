@@ -1,4 +1,5 @@
-﻿using Net.Demandware.Ocapi.Documents.Common;
+﻿using Net.Demandware.Ocapi.DataTypes;
+using Net.Demandware.Ocapi.Documents.Common;
 using Newtonsoft.Json;
 
 namespace Net.Demandware.Ocapi.Documents.Shop
@@ -14,7 +15,7 @@ namespace Net.Demandware.Ocapi.Documents.Shop
         /// The description of the product.
         /// </summary>
         [JsonProperty(PropertyName = "product_description")]
-        public string ProductDescription { get; set; }
+        public Localized<string> ProductDescription { get; set; }
 
         /// <summary>
         /// The id of the product.
@@ -26,13 +27,13 @@ namespace Net.Demandware.Ocapi.Documents.Shop
         /// The name of the product.
         /// </summary>
         [JsonProperty(PropertyName = "product_name")]
-        public string ProductName { get; set; }
+        public Localized<string> ProductName { get; set; }
 
         /// <summary>
         /// The link title.
         /// </summary>
         [JsonProperty(PropertyName = "title")]
-        public string Title { get; set; }
+        public Localized<string> Title { get; set; }
 
         #endregion
     }

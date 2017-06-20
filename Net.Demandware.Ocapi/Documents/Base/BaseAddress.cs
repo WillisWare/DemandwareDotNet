@@ -6,7 +6,7 @@ namespace Net.Demandware.Ocapi.Documents.Base
     /// <summary>
     /// Represents the basic structure of an address.
     /// </summary>
-    public abstract class BaseAddress
+    public abstract class BaseAddress : BaseClass
     {
         #region Properties
 

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Net.Demandware.Ocapi.Documents.Base;
 using Newtonsoft.Json;
 
 namespace Net.Demandware.Ocapi.Documents.Shop
@@ -6,7 +7,7 @@ namespace Net.Demandware.Ocapi.Documents.Shop
     /// <summary>
     /// Represents a gift certificate item.
     /// </summary>
-    public sealed class GiftCertificateItem
+    public sealed class GiftCertificateItem : BaseClass
     {
         #region Properties
 
@@ -15,6 +16,12 @@ namespace Net.Demandware.Ocapi.Documents.Shop
         /// </summary>
         [JsonProperty(PropertyName = "amount", Required = Required.DisallowNull)]
         public decimal Amount { get; set; }
+
+        /// <summary>
+        /// Id used to identify this item.
+        /// </summary>
+        [JsonProperty(PropertyName = "gift_certificate_item_id")]
+        public override string Id { get; set; }
 
         /// <summary>
         /// The certificate's message.

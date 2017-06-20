@@ -62,7 +62,7 @@ namespace Net.Demandware.Ocapi.Documents.Shop
         /// The resource link to the currentShippingAddress of this product list.
         /// </summary>
         [JsonProperty(PropertyName = "current_shipping_address_link")]
-        public AddressLink CurrentShippingAddressLink { get; set; }
+        public CustomerAddressLink CurrentShippingAddressLink { get; set; }
 
         /// <summary>
         /// The description of this product list.
@@ -104,7 +104,7 @@ namespace Net.Demandware.Ocapi.Documents.Shop
         /// The resource link to the postEventShippingAddress of this product list.
         /// </summary>
         [JsonProperty(PropertyName = "post_event_shipping_address_link")]
-        public AddressLink PostEventShippingAddressLink { get; set; }
+        public CustomerAddressLink PostEventShippingAddressLink { get; set; }
 
         /// <summary>
         /// The abbreviated shipping address of this product list representing what anonymous user can see.
@@ -122,7 +122,7 @@ namespace Net.Demandware.Ocapi.Documents.Shop
         /// The resource link to the shippingAddress of this product list.
         /// </summary>
         [JsonProperty(PropertyName = "shipping_address_link")]
-        public AddressLink ShippingAddressLink { get; set; }
+        public CustomerAddressLink ShippingAddressLink { get; set; }
 
         /// <summary>
         /// The type of the product list.
