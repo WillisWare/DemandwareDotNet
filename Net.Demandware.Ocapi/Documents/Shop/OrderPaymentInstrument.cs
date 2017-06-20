@@ -17,10 +17,10 @@ namespace Net.Demandware.Ocapi.Documents.Shop
         public decimal Amount { get; set; }
 
         /// <summary>
-        /// The etag to show the last update status.
+        /// The authorization status of the payment transaction.
         /// </summary>
-        [JsonProperty(PropertyName = "etag")]
-        public string ETag { get; set; }
+        [JsonProperty(PropertyName = "authorization_status")]
+        public Status Status { get; set; }
 
         #endregion
     }

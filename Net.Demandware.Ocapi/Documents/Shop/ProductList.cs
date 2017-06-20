@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
 namespace Net.Demandware.Ocapi.Documents.Shop
@@ -48,6 +49,7 @@ namespace Net.Demandware.Ocapi.Documents.Shop
     /// <summary>
     /// Represents a product list.
     /// </summary>
+    [Obsolete("This document class has been removed since v16_1.")]
     public sealed class ProductList
     {
         #region Properties

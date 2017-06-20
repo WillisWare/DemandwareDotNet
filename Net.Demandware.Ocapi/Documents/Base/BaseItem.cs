@@ -45,7 +45,7 @@ namespace Net.Demandware.Ocapi.Documents.Base
         /// Array of price adjustments. Can be empty.
         /// </summary>
         [JsonProperty(PropertyName = "price_adjustments")]
-        public IEnumerable<PriceAdjustment> PriceAdjustments { get; set; }
+        public IEnumerable<PriceAdjustment> PriceAdjustments { get; set; } = new List<PriceAdjustment>();
 
         /// <summary>
         /// The price of the product line item after applying all product-level adjustments.

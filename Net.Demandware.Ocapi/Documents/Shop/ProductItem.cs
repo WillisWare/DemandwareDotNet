@@ -16,7 +16,7 @@ namespace Net.Demandware.Ocapi.Documents.Shop
         /// The array of bundled product items. Can be empty.
         /// </summary>
         [JsonProperty(PropertyName = "bundled_product_items")]
-        public IEnumerable<BundledProductItem> BundledProductItems { get; set; }
+        public IEnumerable<BundledProductItem> BundledProductItems { get; set; } = new List<BundledProductItem>();
 
         /// <summary>
         /// The inventory list id associated with this item.
@@ -35,7 +35,7 @@ namespace Net.Demandware.Ocapi.Documents.Shop
         /// The array of option items. This array can be empty.
         /// </summary>
         [JsonProperty(PropertyName = "option_items")]
-        public IEnumerable<OptionItem> OptionItems { get; set; }
+        public IEnumerable<OptionItem> OptionItems { get; set; } = new List<OptionItem>();
 
         /// <summary>
         /// The price of this product line item after considering all dependent price adjustments and prorating all order-level price adjustments.
